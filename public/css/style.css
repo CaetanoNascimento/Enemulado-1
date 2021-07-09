@@ -26,18 +26,60 @@
   font-style: normal;
 
 }
+@font-face {
+  font-family: 'robotolight';
+  src: url('../fonts/roboto-light-webfont.woff2') format('woff2'),
+       url('../fonts/roboto-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'robotothin';
+  src: url('../fonts/roboto-thin-webfont.woff2') format('woff2'),
+       url('../fonts/roboto-thin-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'robotobold';
+  src: url('../fonts/roboto-bold-webfont.woff2') format('woff2'),
+       url('../fonts/roboto-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'robotoregular';
+  src: url('../fonts/bebasneueregular-gxj83-webfont.woff2') format('woff2'),
+       url('../fonts/bebasneueregular-gxj83-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 
 
 body{
 
-  font-family:'Roboto', sans-serif;
+  font-family: 'robotothin';
   background-color: #ffff;
 }
 
 #logo{
   
   padding-top: 35px;
+  margin-left: 104px;
 }
 
 #menu {
@@ -56,7 +98,7 @@ body{
   color: black;
   text-align: center;
   text-decoration: none;
-  font-weight:500;
+  font-weight:700;
   font-size: 14px;
   line-height: 40px;
   margin-left: 70px;
@@ -77,21 +119,56 @@ body{
 
 .teste{
   font-family: 'bebas_neueregular';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 55px;
-  line-height: 70px;
-  width: 565px;
-  margin-left: 100px;
-  padding-top: 100px;
-  background-color: #ffff;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 58px;
+    width: 565px;
+    margin-left: 100px;
+    padding-top: 100px;
+    background-color: #ffff;
 }
 
-.principal img{
-  margin-left: 100px;
+.principalft{
+  margin-left: 111px;
     width: 465px;
 }
 
 .part2{
+  padding-top: 35px;
+    margin-left: 50px;
+    font-weight: normal;
+    font-size: 20px;
+}
+.botao{
+  background-color: #63AAEB;
+  border: #63AAEB;
+  color: #ffff;
+  border-radius: 20px;
+  width: 198px;
+  height: 53px;
+
+}
+.detalhes{
+  margin-left: 104px;
+    text-align: start;
+    padding-top: 50px;
+}
+
+.detalhes span{
   display: block;
+  font-family: 'robotolight';
+  padding-top: 30px;
+  font-weight: 600;
+  font-size: 26px;
+  
+}
+.detalhes p{
+  padding-top: 12px;
+  font-size: 20px;
+}
+
+.detalhes img{
+  display: block;
+  
 }
