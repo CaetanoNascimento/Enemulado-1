@@ -12,6 +12,6 @@ app.use(bodyParser.json()); // json de entrada do body
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
-app.use(express.static(__dirname+'/'));
+app.use(express.static(__dirname+'/public'));
 
 module.exports = app;
