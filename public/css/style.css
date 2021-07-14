@@ -1,6 +1,4 @@
-*{
-  margin: 0;
-}
+
 
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
@@ -75,6 +73,16 @@ body{
   font-family: 'robotothin';
   background-color: #ffff;
 }
+.principal{
+
+  width: 1349px;
+  height: 5356px;
+  /* padding-left: 50px; */
+  /* padding-right: 50px; */
+  background: #fff;
+  margin: 0 auto;
+
+}
 
 #logo{
   
@@ -84,7 +92,7 @@ body{
 
 #menu {
   list-style-type: none;
-  margin-left: 60px;
+  margin-left: 80px;
   overflow: hidden;
   padding-top: 65px;
 }
@@ -101,7 +109,7 @@ body{
   font-weight:700;
   font-size: 14px;
   line-height: 40px;
-  margin-left: 70px;
+  margin-left: 78px;
 }
 
 .entrar {
@@ -119,24 +127,25 @@ body{
 
 .teste{
   font-family: 'bebas_neueregular';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 45px;
-    line-height: 58px;
-    width: 565px;
-    margin-left: 100px;
-    padding-top: 100px;
-    background-color: #ffff;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 58px;
+  line-height: 58px;
+  width: 565px;
+  margin-left: 104px;
+  padding-top: 135px;
+  background-color: #ffff;
 }
 
-.principalft{
-  margin-left: 111px;
-    width: 465px;
+.ft{
+  margin-left: 41px;
+  width: 465px;
+  padding-top: 40px;
 }
 
 .part2{
   padding-top: 35px;
-    margin-left: 50px;
+    margin-left: 52px;
     font-weight: normal;
     font-size: 20px;
 }
@@ -145,30 +154,67 @@ body{
   border: #63AAEB;
   color: #ffff;
   border-radius: 20px;
-  width: 198px;
-  height: 53px;
+  width: 249px;
+  height: 72px;
+  margin-left: 13px;
+  margin-top: 18px;
+  font-size: 18px;
 
 }
 .detalhes{
-  margin-left: 104px;
-    text-align: start;
-    padding-top: 50px;
+  margin-left: 83px;
+    /* text-align: start; */
+    padding-top: 60px;
+    margin-right: 61px;
 }
 
 .detalhes span{
   display: block;
   font-family: 'robotolight';
   padding-top: 30px;
-  font-weight: 600;
+  font-weight: 300;
   font-size: 26px;
   
 }
 .detalhes p{
   padding-top: 12px;
   font-size: 20px;
+  width: 290px;
 }
 
 .detalhes img{
   display: block;
   
+}
+
+.areas{
+  padding-top: 100px;
+  margin-left: 100px;
+  font-family: 'robotothin';
+  font-size: 30px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+.imagens .cores:hover{
+  background-color: #FEE774;
+  
+ 
+}
+.cores{
+  background-color: #BDDBFF;
+  border-radius: 10px;
+  margin-left: 97px;
+  margin-top: 90px;
+  font-size: 18px;
+
+}
+.imagens img{
+  display: block;
+    padding-right: 81px;
+    padding-left: 60px;
+    padding-top: 48px;
+    margin-top: 35px;
+    width: 105px;
 }
