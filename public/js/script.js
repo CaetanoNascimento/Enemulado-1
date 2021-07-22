@@ -30,3 +30,10 @@ function mudaimagem3(){
 function mousesai3(){
     document.getElementById("imagemcor3").src = "./img/livros.png"
 }
+
+function mudatexto(elemento){
+   console.log(elemento.children[2].innerText)
+ document.getElementById("myP").innerHTML = "novo"
+
+}
+

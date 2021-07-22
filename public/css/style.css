@@ -94,7 +94,7 @@ body{
   list-style-type: none;
   margin-left: 80px;
   overflow: hidden;
-  padding-top: 65px;
+  padding-top: 50px;
 }
 #menu dt {
   float: left;
@@ -103,13 +103,13 @@ body{
 
 #menu a {
   display: block;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-weight:700;
-  font-size: 14px;
-  line-height: 40px;
-  margin-left: 78px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 40px;
+    margin-left: 74px;
 }
 
 .entrar {
@@ -163,7 +163,6 @@ body{
 }
 .detalhes{
   margin-left: 83px;
-    /* text-align: start; */
     padding-top: 60px;
     margin-right: 61px;
 }
@@ -234,7 +233,7 @@ body{
   margin-left: 103px;
   font-style: normal;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 21px;
   padding-top: 44px;
   padding-left: 20px;
@@ -286,18 +285,100 @@ body{
 
 .alunos{
   background: #F0F0F0;
-  border-radius: 25px;
-  width: 465px;
-  height: 93px;
+    border-radius: 25px;
+    width: 465px;
+    height: 93px;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+.me{
   display: block;
-  margin-left: 45px;
-
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 23px;
 
 }
-.alunos span{
+
+.me span{
+  display: block;
+  margin-top: -47px;
+  margin-left: 100px;
+}
+
+#nome{
+  font-weight: 800;
+  font-size: 25px;
+}
+
+.salvou{
+  width: 620px;
+  height: 291px;
+  margin-left: 33px;
+  padding-left: 37px;
+  background: #DDEFFD;
+  border-radius: 0px 145.5px 50px;
   font-style: normal;
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 30px;
-  width: 244px;
+  font-weight: 200;
+  font-size: 28px;
+  line-height: 33px;
+  text-align: center;
+  margin-top: 64px;
+
+}
+
+.salvou p{
+  width: 593px;
+height: 103.85px;
+left: 654px;
+top: 2451.15px;
+}
+
+
+.azul{
+  background-color: #63AAEB;
+  margin-top: 154px;
+  list-style-type: none;
+  overflow: hidden;
+  
+}
+.azul a{
+  text-decoration: none;
+  font-weight:700;
+  font-size: 24px;
+  line-height: 40px;
+  margin-left: 78px;
+  color: black;
+  text-align: center;
+
+}
+.azul dt{
+  float: left;
+  padding: 10px;
+  margin-left: 9px;
+}
+
+
+.me .alunos:hover{
+  background-color: #FEE774;
+  
+ 
+}
+#enemuladinho{
+  margin-left: 130px;
+}
+#burrozinho{
+  margin-left: -128px;
+}
+.igs{
+  margin-left: 100px;
+  padding-top: 230px;
+}
+.EB{
+  padding-top: 90px;
+}
+
+#blog{
+  display: flex;
+    width: 514px;
 }
