@@ -204,17 +204,100 @@ body{
 }
 .cores{
   background-color: #BDDBFF;
-  border-radius: 10px;
-  margin-left: 97px;
-  margin-top: 90px;
-  font-size: 18px;
+    border-radius: 10px;
+    margin-left: 93px;
+    margin-top: 50px;
+    font-size: 18px;
+    text-align: center;
+    padding-left: 10px;
+    width: 210px;
 
 }
 .imagens img{
+  padding-top: 14px;
+}
+
+.imagens span{
+  padding-top: 1px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 17px;
+    display: block;
+}
+
+.cor{
+  background: #c4c4c446;
+  border-radius: 25px;
+  width: 432px;
+  height: 387px;
+  margin-top: 133px;
+  margin-left: 103px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  padding-top: 44px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.cor2{
+  padding-top: 70px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    width: 469px;
+    margin-left: 100px;
+}
+
+#imgcor{
+  margin-left: -110px;
+  width: 730px;
+}
+#imgcor2{
+  width: 730px;
+}
+
+
+.cor3{
+  background: #c4c4c446;
+  border-radius: 25px;
+  width: 465px;
+  height: 164px;
+  margin-top: -193px;
+  margin-left: 30px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  padding-top: 235px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.areas2{
+  padding-top: 200px;
+  margin-left: 100px;
+  font-family: 'robotothin';
+  font-size: 30px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.alunos{
+  background: #F0F0F0;
+  border-radius: 25px;
+  width: 465px;
+  height: 93px;
   display: block;
-    padding-right: 81px;
-    padding-left: 60px;
-    padding-top: 48px;
-    margin-top: 35px;
-    width: 105px;
+  margin-left: 45px;
+
+
+}
+.alunos span{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 30px;
+  width: 244px;
 }
