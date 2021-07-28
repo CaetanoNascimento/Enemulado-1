@@ -88,6 +88,13 @@ body{
   
   padding-top: 35px;
   margin-left: 104px;
+ 
+}
+
+#logo button{
+  background: transparent;
+  border: none !important;
+  font-size:0;
 }
 
 #menu {
@@ -306,7 +313,7 @@ body{
   margin-left: 100px;
 }
 
-#nome{
+#nomep{
   font-weight: 800;
   font-size: 25px;
 }
@@ -337,9 +344,10 @@ top: 2451.15px;
 
 .azul{
   background-color: #63AAEB;
-  margin-top: 154px;
+  margin-top: 450px;
   list-style-type: none;
   overflow: hidden;
+  padding-top: 40px;
   
 }
 .azul a{
@@ -377,8 +385,162 @@ top: 2451.15px;
 .EB{
   padding-top: 90px;
 }
+.EB button{
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
 
 #blog{
   display: flex;
     width: 514px;
 }
+
+#perfil{
+  margin-left: 104px;
+}
+
+#texto1{
+  font-weight: 200;
+  font-size: 34px;
+  line-height: 36px;
+  margin-left: 100px;
+  padding-top: 35px;
+
+}
+#titulo{
+  margin-left: 100px;
+  margin-top: 90px;
+  font-size: 48px;
+}
+
+.professorzinho{
+  margin-left: 20px;
+  width: 550px;
+}
+.titulo2{
+  margin-left: 104px;
+  font-size: 25px;
+  line-height: 56px;
+  margin-top: 52px;
+}
+
+.paragrafos{
+  font-style: normal;
+  font-weight: 200;
+  font-size: 32px;
+  line-height: 43px;
+  margin-left: 104px;
+  width: 1118px;
+}
+
+.titulo3{
+  margin-left: 104px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 56px;
+  margin-top: 130px;
+}
+
+.time{
+  margin-left: 94px;
+    width: 1157px;
+}
+.time span{
+  width: 421px;
+  display: block;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 0px;
+  margin-left: -30px;
+  margin-top: 45px;
+  text-align: center;
+}
+#nomex{
+  font-weight: 900;
+}
+
+
+.conta{
+  padding-top: 40px;
+  margin-left: 110px;
+  display: flex;
+  line-height: 56px;
+  font-weight:600;
+  color:#666666;
+
+
+}
+.conta input{
+  border: 1px solid #ceced6;
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: block;
+  width: 350px;
+  height: 48px;
+  margin-bottom: 8px;
+  color: #ceced6;
+  padding-left: 12px;
+  outline: none;
+  
+
+}
+.conta img{
+  width: 693px;
+ height: 595px;
+left: 684px;
+top: 165px;
+margin-left: -100px;
+
+}
+.conta button{
+  width: 312px;
+height: 48px;
+margin-left: 15px;
+top: 619px;
+background: #63AAEB;
+border-radius: 100px;
+border: none;
+color: aliceblue;
+margin-top: 12px;
+}
+
+
+.erro{
+  margin-left: 300px;
+}
+
+.login{
+  margin-left: 115px;
+  margin-top: 49px;
+  display: block;
+}
+
+.login button{
+  width: 312px;
+height: 48px;
+left: 121px;
+top: 209px;
+border: 1px solid #D5D7DC;
+box-sizing: border-box;
+border-radius: 100px;
+display: block;
+margin-top: 15px;
+}
+
+#ou{
+  margin-left: 143px;
+}
+
+.lo input{
+  width: 312px;
+height: 48px;
+border: 1px solid #D5D7DC;
+box-sizing: border-box;
+border-radius: 6px;
+display: block;
+padding-left: 12px;
+  outline: none;
+}
+
