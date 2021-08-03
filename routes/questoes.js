@@ -5,7 +5,7 @@ const login = require('../middleware/login');
 
 
 
-router.get('/', login.obrigatorio, (req, res, next) => {
+router.get('/', (req, res, next) => {
     console.log(req.usuario)
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
