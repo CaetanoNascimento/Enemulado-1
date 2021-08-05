@@ -12,7 +12,13 @@ app.use('/questoes', rotaquestoes);
 app.use('/usuarios', rotausuarios);
 
 
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/public/pages/login.html');
+});
 
+app.get('/cadastro', (req, res) => {
+    res.sendFile(__dirname + '/public/pages/cadastro.html');
+});
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');

@@ -1,62 +1,64 @@
-function mudaimagem(){ 
+const { response } = require("express")
+
+function mudaimagem() {
     document.getElementById("imagemcor").src = "./img/professor_color.png"
 
 }
 
-function mousesai(){
+function mousesai() {
     document.getElementById("imagemcor").src = "./img/professor_uncolor.png"
 }
 
-function mudaimagem1(){ 
+function mudaimagem1() {
     document.getElementById("imagemcor1").src = "./img/mundocolor.png"
 }
 
-function mousesai1(){
+function mousesai1() {
     document.getElementById("imagemcor1").src = "./img/mundo.png"
 }
 
-function mudaimagem2(){ 
+function mudaimagem2() {
     document.getElementById("imagemcor2").src = "./img/molequinhocolor.png"
 }
 
-function mousesai2(){
+function mousesai2() {
     document.getElementById("imagemcor2").src = "./img/molequinho.png"
 }
 
-function mudaimagem3(){ 
+function mudaimagem3() {
     document.getElementById("imagemcor3").src = "./img/livroscolor.png"
 }
 
-function mousesai3(){
+function mousesai3() {
     document.getElementById("imagemcor3").src = "./img/livros.png"
 }
 
-function mudatexto(elemento){
+function mudatexto(elemento) {
 
-   console.log(elemento.children[2].innerText)
+    console.log(elemento.children[2].innerText)
 
-   let nome = elemento.children[2].innerText
+    let nome = elemento.children[2].innerText
 
-   if(nome ==  "Caetano Nascimento"){
+    if (nome == "Caetano Nascimento") {
 
-    document.getElementById("myP").innerHTML = "Usar o ENEMULADO me salvou porque não tinha outra ferramenta que encaixava tão bem com o meu perfil. Espero que muitas pessoas possam também encontrar esse site"
-    document.getElementById("titulo").innerHTML = "ME SALVOU!"
-   }
+        document.getElementById("myP").innerHTML = "Usar o ENEMULADO me salvou porque não tinha outra ferramenta que encaixava tão bem com o meu perfil. Espero que muitas pessoas possam também encontrar esse site"
+        document.getElementById("titulo").innerHTML = "ME SALVOU!"
+    }
 
-   if(nome ==  "Pepas El Mago"){
+    if (nome == "Pepas El Mago") {
 
-    document.getElementById("myP").innerHTML = "Texto de Pepas"
-    document.getElementById("titulo").innerHTML = "AAAAEEE"
-    
+        document.getElementById("myP").innerHTML = "Texto de Pepas"
+        document.getElementById("titulo").innerHTML = "AAAAEEE"
 
-   }
 
-   if(nome ==  "Juan Euzinho"){
+    }
 
-    document.getElementById("myP").innerHTML = "Texto de Euzis"
-    document.getElementById("titulo").innerHTML = "VALEUUUUUUU"
+    if (nome == "Juan Euzinho") {
 
-   }
+        document.getElementById("myP").innerHTML = "Texto de Euzis"
+        document.getElementById("titulo").innerHTML = "VALEUUUUUUU"
+
+    }
 
 }
 
@@ -117,15 +119,15 @@ async function adicionar(login) {
         fetch('http://localhost:3000/cadastro', {
             method: 'POST',
             body: JSON.stringify(JSON.parse(login)),
-             headers: {
-                 "Content-Type": "application/json; charset=utf-8"
-             }
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            }
 
         }).then(result => {
             return result.json();
         }).then(data => {
-           // this.listaTabela();
-           console.log(data);
+            // this.listaTabela();
+            console.log(data);
             // this.arrayProdutos.push(produto);
         });
 
@@ -135,9 +137,16 @@ async function adicionar(login) {
 }
 
 
+<<<<<<< HEAD
 let foto = document.getElementById('Camera');
 let file = document.getElementById('png');
 
 foto.addEventListener('click', () => {
     file.click();
 });
+=======
+function teste() {
+    fetch('https://localhost:3000/login')
+   
+}
+>>>>>>> ed2584bc435d50ee585773b20d8c1c45b8cece57
