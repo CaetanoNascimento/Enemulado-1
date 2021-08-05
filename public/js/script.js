@@ -134,3 +134,10 @@ async function adicionar(login) {
     }
 }
 
+
+let foto = document.getElementById('Camera');
+let file = document.getElementById('png');
+
+foto.addEventListener('click', () => {
+    file.click();
+});
