@@ -462,8 +462,6 @@ top: 2451.15px;
 #nomex{
   font-weight: 900;
 }
-
-
 .conta{
   padding-top: 40px;
   margin-left: 110px;
@@ -646,9 +644,121 @@ padding-left: 12px;
   font-size: 17px;
   margin-top: 25px;
   font-family: 'robotothin';
+  outline: none;
 }
-.browsers{
+.questionario{
+  margin-left: 118px;
+  width: 1291px;
+  margin-top: 30px;
+}
+.questionario1{
   border: 1px solid #D5D7DC;
-  border: none;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: -13px;
+  font-family: 'robotothin';
+  width: 180px;
+  height: 48px;
+  display: block;
+  margin-left: -10px;
 }
+#menor{
+  width: 116px;
+  height: 48px;
+  margin-left: -5px;
+}
+.textoP{
+  width: 1002px;
+  height: 248px;
+  border: 1px solid #D5D7DC;
+  box-sizing: border-box;
+  border-radius: 6px;
+  outline: none;
+  display: block;
+  margin-top: 15px;
+}
+.textoPC{
+  margin-left: 111px;
+  margin-top: 45px;
+  font-size: 16px;
+}
+
+.imagemTCF{
+  width: 218px;
+  height: 40px;
+  border: 1px solid #D5D7DC;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin-left: 111px;
+  margin-top: 45px;
+  padding-left: 7px;
+
+}
+
+#camera{
+  width: 30px;
+  margin-left: 45px;
+  cursor: pointer;
+}
+#camera:hover{
+ background: #666666;
+}
+
+#png{
+  margin-left: 26px;
+  padding-top: 5px; 
+  display:none;
+}
+#TCF{
+  margin-left: 26px;
+  padding-top: 5px;
+}
+
+.resposta{
+  margin-left: 111px;
+  margin-top: 45px;
+  font-size: 16px;
+  display: block;
+}
+.resposta input{
+  width: 1002px;
+  height: 120px;
+  border: 1px solid #D5D7DC;
+  box-sizing: border-box;
+  border-radius: 6px;
+  outline: none;
+  display: block;
+  margin-top: 15px;
+}
+
+.resposta span{
+  margin-top: 45px;
+}
+.corretas{
+  padding-top: 90px;
+  margin-left: 111px;
+}
+
+.ultimoBO{
+  width: 312px;
+  height: 48px;
+  border: 1px solid #63AAEB;
+  box-sizing: border-box;
+  border-radius: 100px;
+  background-color: #63AAEB;
+  color: #ffffff;
+  margin-top: 95px;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 111px;
+}
+
+
+
+
+
+
 

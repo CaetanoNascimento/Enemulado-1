@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+node_modules/
+=======
 node_modules/
 
 nodemon
@@ -5,3 +8,4 @@ nodemon
 enemuladoSave
 
 aa
+>>>>>>> ed2584bc435d50ee585773b20d8c1c45b8cece57
