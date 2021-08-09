@@ -5,13 +5,13 @@
                 "authProtocol": "default"
             },
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "35.198.38.241",
             "port": 3306,
             "driver": "MySQL",
-            "name": "enemulado",
+            "name": "root",
             "database": "enemulado",
             "username": "root",
-            "password": "messiaslins2"
+            "password": "rains2020"
         }
     ]
 }

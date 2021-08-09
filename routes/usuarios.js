@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql').pool;
+const login = require('../middleware/login');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -30,7 +31,8 @@ router.post('/cadastro', (req, res, next) => {
                                     Nome: req.body.nome,
                                     email: req.body.email,
                                     cpf: req.body.cpf,
-                                    telefone: req.body.telefone
+                                    telefone: req.body.telefone,
+                                    id_tipo_cargo: req.body.id_tipo_cargo
 
                                 }
                             }
@@ -53,30 +55,29 @@ router.post('/login', (req, res, next) => {
                 return res.status(401).send({ mensagem: 'Falha na autenticação' })
             }
             bcrypt.compare(req.body.senha, results[0].senha, (err, result) => {
-                if (error)
-                 { return res.status(401).send({ mensagem: 'Falha na autenticação' })}
-                if(result){
-                let token = jwt.sign({
-                    id_usuario: results[0].id,
-                    Nome: results[0].nome,
-                    email: results[0].email,
-                    Cpf: results[0].cpf,
-                    telefone: results[0].telefone,
-                    id_tipo_cargo: results[0].id_tipo_cargo  
+                if (error) { return res.status(401).send({ mensagem: 'Falha na autenticação' }) }
+                if (result) {
+                    let token = jwt.sign({
+                        id_usuario: results[0].id,
+                        Nome: results[0].nome,
+                        email: results[0].email,
+                        Cpf: results[0].cpf,
+                        telefone: results[0].telefone,
+                        id_tipo_cargo: results[0].id_tipo_cargo
 
-                }, process.env.JWT_KEY, 
-                {
-                    expiresIn: "1h"
-                });
-                  return res.status(200).send({
-                      mensagem: 'Autenticado com sucesso',
-                      usuario: results,
-                      token: token
-                     });
+                    }, process.env.JWT_KEY,
+                        {
+                            expiresIn: "1h"
+                        });
+                    return res.status(200).send({
+                        mensagem: 'Autenticado com sucesso3',
+                        usuario: results,
+                        token: token
+                    });
                 }
                 return res.status(401).send({ mensagem: 'Falha na autenticação' })
             });
-            
+
         });
     });
 })
@@ -91,36 +92,110 @@ router.post('/login_adm', (req, res, next) => {
             if (results.length < 1) {
                 return res.status(401).send({ mensagem: 'Falha na autenticação' })
             }
-            if(results[0].id_tipo_cargo != 2){
-                return res.status(401).send({ mensagem: 'Falha na autenticação' })
+            if (results[0].id_tipo_cargo != 2) {
+                return res.status(401).send({ mensagem: 'Ação não autorizada' })
             }
             bcrypt.compare(req.body.senha, results[0].senha, (err, result) => {
-                if (error)
-                 { return res.status(401).send({ mensagem: 'Falha na autenticação' })}
-                if(result){
-                let token = jwt.sign({
-                    id_usuario: results[0].id,
-                    Nome: results[0].nome,
-                    email: results[0].email,
-                    Cpf: results[0].cpf,
-                    telefone: results[0].telefone,
-                    id_tipo_cargo: results[0].id_tipo_cargo
+                if (error) { return res.status(401).send({ mensagem: 'Falha na autenticação' }) }
+                if (result) {
+                    let token = jwt.sign({
+                        id_usuario: results[0].id,
+                        Nome: results[0].nome,
+                        email: results[0].email,
+                        Cpf: results[0].cpf,
+                        telefone: results[0].telefone,
+                        id_tipo_cargo: results[0].id_tipo_cargo
 
-                }, process.env.JWT_KEY, 
-                {
-                    expiresIn: "1h"
-                });
-                  return res.status(200).send({
-                      mensagem: 'Autenticado com sucesso',
-                      token: token
-                     });
+                    }, process.env.JWT_KEY,
+                        {
+                            expiresIn: "1h"
+                        });
+                    return res.status(200).send({
+                        mensagem: 'Autenticado com sucesso',
+                        token: token
+                    });
                 }
                 return res.status(401).send({ mensagem: 'Falha na autenticação' })
             });
-            
+
         });
     });
 })
+
+router.get('/lista', login.obrigatorio, (req, res, next) => {
+    console.log(req.usuario)
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM usuario;',
+            (error, result, field) => {
+                conn.release(); 
+                if (error) { return res.status(500).send({ error: error }) }
+                const response = {
+                    tamanho: result.length,
+                    produtos: result.map(listauser => {
+                        return {
+                            usuarios: {
+                                id: listauser.id,
+                                Nome: listauser.nome,
+                                Email: listauser.email,
+                                Cpf: listauser.cpf,
+                                Numero: listauser.telefone,
+                                id_tipo_cargo: listauser.id_tipo_cargo
+                            },
+                            Request: {
+                                tipo: 'GET',
+                                descricao: 'Retorna os detalhes de uma questao específico',
+                                url: 'http://localhost:3000/usuarios/lista/' + listauser.id
+
+                            }
+                        }
+
+                    })
+                }
+                return res.status(200).send(response)
+            }
+        )
+    });
+})
+
+router.get('/lista/:id_user', login.obrigatorio, (req, res, next) => {
+    console.log(req.params.id_user)
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM usuario WHERE id = ?;',
+            [req.params.id_user],
+            (error, result, field) => {
+                if (error) { return res.status(500).send({ error: error }) }
+
+                if (result.length == 0) {
+                    return res.status(404).send({
+                        mensagem: 'Não foi encontrado usuario com esse ID'
+                    })
+                }
+                const response = {
+
+                    usuario: {
+                        id: result[0].id,
+                        Nome: result[0].nome,
+                        Email: result[0].email,
+                        Cpf: result[0].cpf,
+                        Numero: result[0].telefone,
+                        id_tipo_cargo: result[0].id_tipo_cargo
+                    },
+                    Request: {
+                        tipo: 'GET',
+                        descricao: 'Retorna os produtos',
+                        url: 'http://localhost:3000/usuarios/lista'
+                    }
+                }
+                return res.status(201).send(response)
+            }
+        )
+    });
+
+});
 
 
 

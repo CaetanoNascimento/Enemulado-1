@@ -1,3 +1,35 @@
+CREATE TABLE IF NOT EXISTS instituicao (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome_instituicao VARCHAR(45) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS AreaConhecimento (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome_area VARCHAR(45) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS CorProva (
+    id INT NOT NULL AUTO_INCREMENT,
+    Cor VARCHAR(10) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS anoprova (
+    id INT NOT NULL AUTO_INCREMENT,
+    Ano VARCHAR(45) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS materia (
+    id INT NOT NULL AUTO_INCREMENT,
+    NomeMateria VARCHAR(50) NOT NULL,
+    id_AreaConhecimento INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_AreaConhecimento) REFERENCES AreaConhecimento(id)
+);
+
 create table if not exists questoes(
     id INT NOT NULL AUTO_INCREMENT,
     numero_questao INT NOT NULL,
@@ -22,33 +54,13 @@ create table if not exists questoes(
     FOREIGN KEY (id_anoprova) references anoprova(id),
     FOREIGN KEY (id_instituicao) references instituicao(id)
 );
-CREATE TABLE IF NOT EXISTS instituicao (
+
+CREATE TABLE IF NOT EXISTS tipo_cargo (
     id INT NOT NULL AUTO_INCREMENT,
-    nome_instituicao VARCHAR(45) NOT NULL,
+    nome_cargo VARCHAR(45) NOT NULL,
     PRIMARY KEY (id)
 );
-CREATE TABLE IF NOT EXISTS AreaConhecimento (
-    id INT NOT NULL AUTO_INCREMENT,
-    nome_area VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id)
-);
-CREATE TABLE IF NOT EXISTS Materia (
-    id INT NOT NULL AUTO_INCREMENT,
-    NomeMateria VARCHAR(15) NOT NULL,
-    id_AreaConhecimento INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_AreaConhecimento) REFERENCES AreaConhecimento(id)
-);
-CREATE TABLE IF NOT EXISTS CorProva (
-    id INT NOT NULL AUTO_INCREMENT,
-    Cor VARCHAR(10) NOT NULL,
-    PRIMARY KEY (id)
-);
-CREATE TABLE IF NOT EXISTS AnoProva (
-    id INT NOT NULL AUTO_INCREMENT,
-    Ano VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id)
-);
+
 CREATE TABLE IF NOT EXISTS usuario (
     id INT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
@@ -60,11 +72,14 @@ CREATE TABLE IF NOT EXISTS usuario (
     PRIMARY KEY (id),
     FOREIGN KEY (id_tipo_cargo) REFERENCES tipo_cargo(id)
 );
-CREATE TABLE IF NOT EXISTS tipo_cargo (
-    id INT NOT NULL AUTO_INCREMENT,
-    nome_cargo VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id)
+
+CREATE TABLE IF NOT EXISTS simulados(
+    id INT NOT NULL,
+    id_questoes int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_questoes) REFERENCES questoes(id)
 );
+
 CREATE TABLE IF NOT EXISTS simulados_aluno (
     id INT NOT NULL AUTO_INCREMENT,
     id_simulado INT NOT NULL,
@@ -80,12 +95,6 @@ CREATE TABLE IF NOT EXISTS simulados_aluno (
     PRIMARY KEY (id),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id),
     FOREIGN KEY (id_simulado) REFERENCES simulados(id)
-);
-CREATE TABLE IF NOT EXISTS simulados(
-    id INT NOT NULL,
-    id_questoes int NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_questoes) REFERENCES questoes(id)
 );
 -- inserts 
 insert into AreaConhecimento(nome_area)
@@ -116,7 +125,7 @@ values ('Azul'),
     ('Laranja'),
     ('Verde'),
     ('Cinza');
-insert into corprova(Cor)
+insert into anoprova(Ano)
 values ('2000'),
     ('2001'),
     ('2002'),
@@ -151,11 +160,11 @@ values ('2000'),
 insert into instituicao(nome_instituicao)
 values ('INEP'),
     ('UNICAMP');
--- ADM ou Aluno
+-- ADM ou Aluno insert tem que ser realizado pelo postman para tem o hash
 insert into usuario(nome, email, cpf, telefone, senha, id_tipo_cargo)
 values (
-        'Pedro Paulo',
-        "pedropaulolins9@gmail",
+        'Pedro Paulo Messias Lins',
+        "pedropaulolins9@gmail.com",
         70704103443,
         988508897,
         "123456789",
@@ -163,9 +172,14 @@ values (
     );
 insert into usuario(nome, email, cpf, telefone, senha)
 values (
-        'Juan Pablo',
-        "euzin@gmail",
-        5555555555,
-        555555555,
-        "123456789"
+        'Juan Pablo Melo de Lima',
+        "juam.euzin@gmail.com",
+        13708022424,
+        981160117,
+        "nasahacker",
+        
     );
+
+    insert into questoes(numero_questao, id_Materia, id_CorProva, id_AnoProva, id_instituicao, textoprincipal, textoquestao, alternativa_A, alternativa_B, alternativa_C, alternativa_D, alternativa_E, gabarito) 
+values
+  (11, 8, 1, 21, 1,'Na sua imaginação perturbada sentia a natureza toda agitando-se para sufocá-la. Aumentavam as sombras. No céu, nuvens colossais e túmidas rolavam para o abismo do horizonte… Na várzea, ao clarão indeciso do crepúsculo, os seres tomavam ares de monstros… As montanhas, subindo ameaçadoras da terra, perfilavam-se tenebrosas… Os caminhos, espreguiçando-se sobre os campos, animavam-se quais serpentes infinitas… As árvores soltas choravam ao vento, como carpideiras fantásticas da natureza morta… Os aflitivos pássaros noturnos gemiam agouros com pios fúnebres. Maria quis fugir, mas os membros cansados não acudiam aos ímpetos do medo e deixavam-na prostrada em uma angústia desesperada.', 'No trecho, o narrador mobiliza recursos de linguagem que geram uma expressividade centrada na percepção da', 'relação entre a natureza opressiva e o desejo de libertação da personagem.', 'confluência entre o estado emocional da personagem e a configuração da paisagem.', 'prevalência do mundo natural em relação à fragilidade humana.', 'depreciação do sentido da vida diante da consciência da morte iminente.', 'instabilidade psicológica da personagem face à realidade hostil.', 'b');
