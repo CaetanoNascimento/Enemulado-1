@@ -756,9 +756,102 @@ padding-left: 12px;
   margin-left: 111px;
 }
 
+.logo_nome img{
+  margin-left: 45px;
+  width: 120px;
+  height: 24px;
+  padding-top: 45px;
+}
+
+.listaLateral {
+  height: 710px;
+  width: 240px;
+  background: #63AAEB;
+  color: #ffffff;
+}
+
+.listaLateral .logo_content .i{
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+}
+.listaLateral #btn{
+  margin-left: 207px;
+  padding-top: 10px;
+}
+.lista{
+
+  margin-top: 45px;
+  list-style-type: none;
+  font-size: 16px;
+  line-height: 65px;
+  height: 375px;
+
+}
+.sair img{
+  margin-left: 30px;
+}
+.editar{
+  margin-left: 95px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+  padding-top: 55px;
+  display: block;
+}
+.conta1{
+  display: block;
+  margin-left: -109px;
+}
+.princ7{
+  padding-top: 100px;
+  margin-left: -65px;
+}
+.simulados{
+  margin-left: 111px;
+}
+.imagensSimulado .coresS:hover{
+
+    background-color: #FEE774;
+
+}
+.coresS{
+  background-color: #BDDBFF;
+  border-radius: 10px;
+  margin-left: 51px;
+  margin-top: 50px;
+  font-size: 18px;
+  text-align: center;
+  padding-left: 10px;
+  width: 210px;
+  height: 184px;
+
+}
+.imagensSimulado img{
+  padding-top: 14px;
+}
+
+.imagensSimulado span{
+  padding-top: 1px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 17px;
+    display: block;
+}
 
 
+.nota{
+  margin-left: 365px;
+}
 
+.prooo{
+  margin-left: 55px;
 
+}
+
+.prooo img{
+  padding-top: 45px;
+}
 
 
