@@ -136,17 +136,37 @@ async function adicionar(login) {
     }
 }
 
+function mudaimagem4() {
+    document.getElementById("imagemcorS").src = "../img/professor_color.png"
 
-<<<<<<< HEAD
-let foto = document.getElementById('Camera');
-let file = document.getElementById('png');
-
-foto.addEventListener('click', () => {
-    file.click();
-});
-=======
-function teste() {
-    fetch('https://localhost:3000/login')
-   
 }
->>>>>>> ed2584bc435d50ee585773b20d8c1c45b8cece57
+
+function mousesai4() {
+    document.getElementById("imagemcorS").src = "../img/professor_uncolor.png"
+}
+
+function mudaimagem5() {
+    document.getElementById("imagemcorS1").src = "../img/mundocolor.png"
+}
+
+function mousesai5() {
+    document.getElementById("imagemcorS1").src = "../img/mundo.png"
+}
+
+function mudaimagem6() {
+    document.getElementById("imagemcorS2").src = "../img/molequinhocolor.png"
+}
+
+function mousesai6() {
+    document.getElementById("imagemcorS2").src = "../img/molequinho.png"
+}
+
+function mudaimagem7() {
+    document.getElementById("imagemcorS3").src = "../img/livroscolor.png"
+}
+
+function mousesai7() {
+    document.getElementById("imagemcorS3").src = "../img/livros.png"
+}
+
+
