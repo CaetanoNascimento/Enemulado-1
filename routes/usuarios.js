@@ -70,7 +70,7 @@ router.post('/login', (req, res, next) => {
                             expiresIn: "1h"
                         });
                     return res.status(200).send({
-                        mensagem: 'Autenticado com sucesso3',
+                        mensagem: 'Autenticado com sucesso',
                         usuario: results,
                         token: token
                     });

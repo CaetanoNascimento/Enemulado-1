@@ -137,16 +137,13 @@ async function adicionar(login) {
 }
 
 
-<<<<<<< HEAD
 let foto = document.getElementById('Camera');
 let file = document.getElementById('png');
 
 foto.addEventListener('click', () => {
     file.click();
 });
-=======
 function teste() {
-    fetch('https://localhost:3000/login')
+    fetch('https://localhost:3030/login')
    
 }
->>>>>>> ed2584bc435d50ee585773b20d8c1c45b8cece57
