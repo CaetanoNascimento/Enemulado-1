@@ -32,10 +32,6 @@
   font-style: normal;
 
 }
-
-
-
-
 @font-face {
   font-family: 'robotothin';
   src: url('../fonts/roboto-thin-webfont.woff2') format('woff2'),
@@ -53,10 +49,6 @@
   font-style: normal;
 
 }
-
-
-
-
 @font-face {
   font-family: 'robotoregular';
   src: url('../fonts/bebasneueregular-gxj83-webfont.woff2') format('woff2'),
@@ -65,8 +57,6 @@
   font-style: normal;
 
 }
-
-
 
 body{
 
@@ -203,8 +193,6 @@ body{
   font-weight: 600;
   font-style: normal;
 }
-
-
 .imagens .cores:hover{
   background-color: #FEE774;
   
@@ -368,7 +356,6 @@ top: 2451.15px;
   margin-left: 9px;
 }
 
-
 .me .alunos:hover{
   background-color: #FEE774;
   
@@ -505,8 +492,6 @@ border: none;
 color: aliceblue;
 margin-top: 12px;
 }
-
-
 .erro{
   margin-left: 300px;
 }
@@ -587,8 +572,6 @@ cursor: pointer;
   margin-left: 104px;
   padding-top: 50px;
 }
-
-
 .admin{
   margin-left: 360px;
   padding-top: 20px;
@@ -811,36 +794,6 @@ padding-left: 12px;
 .simulados{
   margin-left: 111px;
 }
-.imagensSimulado .coresS:hover{
-
-    background-color: #FEE774;
-
-}
-.coresS{
-  background-color: #BDDBFF;
-  border-radius: 10px;
-  margin-left: 51px;
-  margin-top: 50px;
-  font-size: 18px;
-  text-align: center;
-  padding-left: 10px;
-  width: 210px;
-  height: 184px;
-
-}
-.imagensSimulado img{
-  padding-top: 14px;
-}
-
-.imagensSimulado span{
-  padding-top: 1px;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 17px;
-    display: block;
-}
-
-
 .nota{
   margin-left: 365px;
 }
@@ -854,4 +807,60 @@ padding-left: 12px;
   padding-top: 45px;
 }
 
+.muda{
+  display: table-cell;
+}
+.acor{
+  background-color: #BDDBFF;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 50px;
+  font-size: 18px;
+  text-align: center;
+  padding-left: 10px;
+  width: 215px;
+  height: 165px;
+  display: inline-block;
+}
+
+.mouse{
+  margin-left: 95px;
+}
+
+.muda .acor:hover{
+  background-color: #FEE774;
+}
+
+.muda img{
+  padding-top: 14px;
+}
+
+.muda span{
+  font-weight: 600;
+  text-align: center;
+  margin-top: 17px;
+  display: block;
+  padding-top: 5px;
+}
+.mudamause{
+  display: block;
+}
+#imagemcor1{
+  padding-top: 10px
+}
+.mudeiiiii{
+  background-color: #BDDBFF;
+  border-radius: 20px;
+  margin-top: 45px;
+  width: 539px;
+  height: 197px
+}
+
+.mudado .mudei:hover{
+  background-color: #FEE774;
+}
+.mudeiiiii img{
+  margin-left: 102px;
+  width: 118px;
+}
 
