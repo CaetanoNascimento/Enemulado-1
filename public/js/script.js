@@ -137,36 +137,36 @@ async function adicionar(login) {
 }
 
 function mudaimagem4() {
-    document.getElementById("imagemcorS").src = "../img/professor_color.png"
+    document.getElementById("imagemcor").src = "../img/professor_color.png"
 
 }
 
 function mousesai4() {
-    document.getElementById("imagemcorS").src = "../img/professor_uncolor.png"
+    document.getElementById("imagemcor").src = "../img/professor_uncolor.png"
 }
 
 function mudaimagem5() {
-    document.getElementById("imagemcorS1").src = "../img/mundocolor.png"
+    document.getElementById("imagemcor1").src = "../img/mundocolor.png"
 }
 
 function mousesai5() {
-    document.getElementById("imagemcorS1").src = "../img/mundo.png"
+    document.getElementById("imagemcor1").src = "../img/mundo.png"
 }
 
 function mudaimagem6() {
-    document.getElementById("imagemcorS2").src = "../img/molequinhocolor.png"
+    document.getElementById("imagemcor2").src = "../img/molequinhocolor.png"
 }
 
 function mousesai6() {
-    document.getElementById("imagemcorS2").src = "../img/molequinho.png"
+    document.getElementById("imagemcor2").src = "../img/molequinho.png"
 }
 
 function mudaimagem7() {
-    document.getElementById("imagemcorS3").src = "../img/livroscolor.png"
+    document.getElementById("imagemcor3").src = "../img/livroscolor.png"
 }
 
 function mousesai7() {
-    document.getElementById("imagemcorS3").src = "../img/livros.png"
+    document.getElementById("imagemcor3").src = "../img/livros.png"
 }
 
 
