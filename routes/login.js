@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const cookieParser = require('cookie-parser');
 
 const {OAuth2Client} = require('google-auth-library');
-const CLIENT_ID = '235715095816-lev6b7fbin8fv6bumtq22mn8g53qbn9c.apps.googleusercontent.com'
+const CLIENT_ID = '235715095816-g7c1qglfud2isfnbnmukifsuddvn2ubc.apps.googleusercontent.com'
 const client = new OAuth2Client(CLIENT_ID);
 
 router.get('/', (req, res) => {
@@ -26,7 +27,10 @@ router.post('/', (req,res)=>{
           res.cookie('session-token', token);
           res.send('success')
       })
-      .catch(console.error);
+      .catch(err=>{
+        res.redirect('/login')
+    })
+     
 
 })
 
