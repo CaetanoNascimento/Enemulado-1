@@ -180,3 +180,29 @@ function mousesai7() {
 }
 
 
+function mudaimagem8() {
+    document.getElementById("imagemcor4").src = "../img/professor_color.png"
+    document.getElementById("imagemcor5").src = "../img/molequinhocolor.png"
+    
+    
+
+}
+function mousesai8() {
+    document.getElementById("imagemcor4").src = "../img/professor_uncolor.png"
+    document.getElementById("imagemcor5").src = "../img/molequinho.png"
+}
+
+function mudaimagem9() {
+    document.getElementById("imagemcor6").src = "../img/mundocolor.png"
+    document.getElementById("imagemcor7").src = "../img/livroscolor.png"
+    
+    
+
+}
+function mousesai9() {
+    document.getElementById("imagemcor6").src = "../img/mundo.png"
+    document.getElementById("imagemcor7").src = "../img/livros.png"
+}
+
+
+

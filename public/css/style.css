@@ -57,6 +57,14 @@
   font-style: normal;
 
 }
+@font-face {
+  font-family: 'robotoitalic';
+  src: url('../fonts/roboto-italic-webfont.woff2') format('woff2'),
+       url('../fonts/roboto-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 body{
 
@@ -568,6 +576,13 @@ cursor: pointer;
   margin-left: 183px;
   padding-top: 10px;
 }
+#senha1{
+  text-decoration:none; 
+}
+#c{
+ color: #63AAEB;
+
+}
 .log{
   margin-left: 104px;
   padding-top: 50px;
@@ -667,38 +682,17 @@ padding-left: 12px;
   margin-top: 45px;
   font-size: 16px;
 }
-
-.imagemTCF{
-  width: 218px;
-  height: 40px;
-  border: 1px solid #D5D7DC;
-  box-sizing: border-box;
-  border-radius: 6px;
-  margin-left: 111px;
-  margin-top: 45px;
-  padding-left: 7px;
-
+.png{
+  margin-left: 114px;
+  padding-top: 45px;
 }
-
-#camera{
-  width: 30px;
-  margin-left: 45px;
-  cursor: pointer;
+.upload{
+  background: #C4C4C4;
+  font-size: 16px;
+  border-radius: 25px;
+  width: 100px;
+  outline: none;
 }
-#camera:hover{
- background: #666666;
-}
-
-#png{
-  margin-left: 26px;
-  padding-top: 5px; 
-  display:none;
-}
-#TCF{
-  margin-left: 26px;
-  padding-top: 5px;
-}
-
 .resposta{
   margin-left: 111px;
   margin-top: 45px;
@@ -832,7 +826,7 @@ padding-left: 12px;
 }
 
 .muda img{
-  padding-top: 14px;
+  padding-top: 17px;
 }
 
 .muda span{
@@ -852,15 +846,122 @@ padding-left: 12px;
   background-color: #BDDBFF;
   border-radius: 20px;
   margin-top: 45px;
-  width: 539px;
-  height: 197px
+  width: 480px;
+  height: 212px;
+  margin-left: 18px;
+}
+.mudado{
+  display: block;
 }
 
-.mudado .mudei:hover{
+.mudado .mudeiiiii:hover{
   background-color: #FEE774;
 }
 .mudeiiiii img{
-  margin-left: 102px;
+  margin-left: 78px;
   width: 118px;
+  margin-top: -25px;
 }
+.mudeiiiii span{
+  display: inline-block;
+  line-height: 21px;
+  margin-left: 51px;
+  font-size: 17px;
+}
+.mudeiiiii h2{
+  text-align: center;
+  padding-top: 5px;
+}
+.novoSimulado{
+  width: 241px;
+  height: 48px;
+  background: #63AAEB;
+  border-radius: 100px;
+  color: white;
+  border: none;
+  font-size: 16px;
+}
+
+.novinho{
+  margin-left: 45px;
+    padding-top: 45px;
+}
+
+.questao{
+  font-family: 'robotolight';
+  margin-left: 111px;
+  font-weight:200;
+font-size: 14px;
+line-height: 16px;
+width: 435px;
+height: 233px;
+}
+#prooo1{
+  padding-top: 34px;
+  margin-left: 225px;
+}
+
+.respostaaa{
+  background: #F5F2F2;
+  width: 426px;
+  height: 46px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 18px;
+  margin-left: 25px;
+  padding-top: 21px;
+  padding-left: 16px;
+
+
+}
+.alternativas{
+  background: #63AAEB;
+  border-radius: 100px;
+  color: #ffffff;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.resposta1{
+  background: #FA9696;
+  width: 426px;
+  height: 46px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 18px;
+  margin-left: 25px;
+  padding-top: 21px;
+  padding-left: 16px;
+}
+.resposta2{
+  background: #09CC86;
+  width: 426px;
+  height: 46px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 18px;
+  margin-left: 25px;
+  padding-top: 21px;
+  padding-left: 16px;
+}
+.bu{
+  width: 183px;
+  height: 48px; 
+background: #63AAEB;
+border-radius: 100px;
+border: none;
+color: #ffffff;
+margin-left: 20px;
+}
+
+.botoes{
+padding-top: 45px;
+}
+.titulo{
+ display: flex;
+}
+.titulo1{
+  padding-top: 17px;
+  margin-left: 20px;
+}
+
 
