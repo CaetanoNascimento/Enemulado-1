@@ -1,10 +1,10 @@
 const route = require('express').Router();
-const cookieParser = require('cookie-parser')
 const { OAuth2Client } = require('google-auth-library');
-const CLIENT_ID = '235715095816-g7c1qglfud2isfnbnmukifsuddvn2ubc.apps.googleusercontent.com'
+const CLIENT_ID = process.env.ID_CLIENT;
 const client = new OAuth2Client(CLIENT_ID);
 
 function checkAuthenticated(req, res, next){
+
     let token = req.cookies['session-token'];
 
     let user = {};
@@ -37,7 +37,3 @@ function checkAuthenticated(req, res, next){
 
 module.exports = route;
 
-// route.get('/', checkAuthenticated, (req,res)=>{
-//     res.sendFile(__basedir + '/public/pages/perfil.html');
- 
-// })

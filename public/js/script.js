@@ -1,4 +1,4 @@
-const { response } = require("express")
+// const { response } = require("express")
 
 function mudaimagem() {
     document.getElementById("imagemcor").src = "./img/professor_color.png"
@@ -86,6 +86,7 @@ function criar() {
     if (senha == confirmar) {
 
         adicionar(login)
+        alert("conta criada")
 
 
 
@@ -139,16 +140,16 @@ async function adicionar(login) {
 function mudaimagem4() {
     document.getElementById("imagemcor").src = "../img/professor_color.png"
 
-let foto = document.getElementById('Camera');
-let file = document.getElementById('png');
+    let foto = document.getElementById('Camera');
+    let file = document.getElementById('png');
 
-foto.addEventListener('click', () => {
-    file.click();
-});
-function teste() {
-    fetch('https://localhost:3030/login')
-   
-}
+    foto.addEventListener('click', () => {
+        file.click();
+    });
+    function teste() {
+        fetch('https://localhost:3030/login')
+
+    }
 }
 
 function mousesai4() {

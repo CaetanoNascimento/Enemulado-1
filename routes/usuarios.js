@@ -5,6 +5,9 @@ const login = require('../middleware/login_mid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+router.get('/cadastro', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/cadastro.html');
+});
 
 router.post('/cadastro', (req, res, next) => {
     mysql.getConnection((err, conn) => {
@@ -129,7 +132,7 @@ router.get('/lista', login.obrigatorio, (req, res, next) => {
         conn.query(
             'SELECT * FROM usuario;',
             (error, result, field) => {
-                conn.release(); 
+                conn.release();
                 if (error) { return res.status(500).send({ error: error }) }
                 const response = {
                     tamanho: result.length,
@@ -196,6 +199,24 @@ router.get('/lista/:id_user', login.obrigatorio, (req, res, next) => {
     });
 
 });
+
+router.get('/:email', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM usuario where email = ?;', [req.params.email],
+            (error, result, field) => {
+                conn.release();
+                if (error) { return res.status(500).send({ error: error }) }
+                const response = {
+                    tamanho: result.length,
+                    email: result.email
+                }
+                return res.status(200).send(response)
+            }
+        )
+    });
+})
 
 
 
