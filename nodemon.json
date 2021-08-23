@@ -1,10 +1,12 @@
 {
     "env" : {
         "MYSQL_USER" : "root",
-        "MYSQL_PASSWORD" : "rains2020",
+        "MYSQL_PASSWORD" : "messiaslins2",
         "MYSQL_DATABASE" : "enemulado",
-        "MYSQL_HOST" : "35.198.38.241",
+        "MYSQL_HOST" : "localhost",
         "MYSQL_PORT" : 3306,
+
+        "ID_CLIENT" : "235715095816-g7c1qglfud2isfnbnmukifsuddvn2ubc.apps.googleusercontent.com",
 
         "JWT_KEY" : "segredo"
     }

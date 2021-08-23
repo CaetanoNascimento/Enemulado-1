@@ -1,9 +1,9 @@
-const route = require('express').Router();
+const router = require('express').Router();
 
 
-route.get('/', (req,res)=>{
+router.get('/', (req,res)=>{
     res.sendFile(__basedir + '/public/pages/home.html');
  
 })
 
-module.exports = route;
+module.exports = router;
