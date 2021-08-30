@@ -184,8 +184,8 @@ function mousesai7() {
 function mudaimagem8() {
     document.getElementById("imagemcor4").src = "../img/professor_color.png"
     document.getElementById("imagemcor5").src = "../img/molequinhocolor.png"
-    
-    
+
+
 
 }
 function mousesai8() {
@@ -196,8 +196,8 @@ function mousesai8() {
 function mudaimagem9() {
     document.getElementById("imagemcor6").src = "../img/mundocolor.png"
     document.getElementById("imagemcor7").src = "../img/livroscolor.png"
-    
-    
+
+
 
 }
 function mousesai9() {
@@ -207,3 +207,13 @@ function mousesai9() {
 
 
 
+let btn = document.querySelector("#btn");
+let sidebar = document.querySelector(".sidebar");
+let searchBtn = document.querySelector(".bx-search");
+
+btn.onclick = function () {
+    sidebar.classList.togle("active");
+}
+searchBtn.onclick = function () {
+    sidebar.classList.togle("active");
+}
