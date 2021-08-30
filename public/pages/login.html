@@ -47,18 +47,11 @@
                         <a id="c" href="./esqueci.html">Esqueci minha senha</a>
                     </div>
 
-                    <a id="senha1" ><button onclick="jwt_login()">Entrar</button></a>
+                    <a id="senha1"><button onclick="jwt_login()">Entrar</button></a>
                 </div>
 
                 <div>
-
-
-                
-
-                   
-
-   
-                 <a id="senha1" href="/usuarios/cadastro"><button id="criar">Criar conta</button></a>
+                    <a id="senha1" href="/usuarios/cadastro"><button id="criar">Criar conta</button></a>
                 </div>
 
 
@@ -87,10 +80,6 @@
                     <img src="../img/TWIT.png">
 
                 </div>
-
-
-
-
 
             </div>
 
@@ -130,17 +119,37 @@
 
                             if (data.tamanho > 0) {
 
-                                location.assign('/home2')
+                                try {
+
+                                    fetch('http://localhost:3030/usuarios/login', {
+                                        method: 'POST',
+                                        body: JSON.stringify({
+                                                            email: teste,
+                                                            google: true
+                                                        }),
+                                        headers: {
+                                            "Content-Type": "application/json; charset=utf-8"
+                                        }
+
+                                    }).then(result => {
+                                        return result.json();
+                                    }).then(data => {
+                                        console.log(data);
+                                        localStorage.setItem("ourToken", data.token)
+                                         location.assign('/home2')
+                                    });
+
+                                } catch (error) {
+                                    console.log(error);
+                                }
 
                             } else {
 
                                 location.assign('/teste/cadastro')
                             }
-
                         })
 
                     signOut();
-
                 }
             };
             xhr.send(JSON.stringify({ token: id_token }));

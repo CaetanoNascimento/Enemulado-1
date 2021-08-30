@@ -13,6 +13,7 @@ module.exports = (req, res, next) => {
           if(err){
 
             console.log("entour no err")
+            console.log(err)
             res.status(401).send({mensagem: "Falha na autenticacao"})
 
            // res.redirect("/");

@@ -82,6 +82,8 @@ function jwt_login(){
         } else {
             localStorage.setItem("ourToken", null)
             alert("Senha errada")
+            document.getElementById('login').value = '';
+            document.getElementById('senha').value = '';
         }
     }).then(data => {
       console.log(data)
@@ -104,14 +106,26 @@ function jwt_auth_load(){
         if (result.ok) {
             return result.json()
         } else {
-            // localStorage.setItem("ourToken", null)
-            console.log("entrou else")
-            location.assign('/login')
+            localStorage.setItem("ourToken", null)
+          console.log("entrou else")
+           location.assign('/login')
         }
     });
 
 }
 
+function logout(){
+    fetch('http://localhost:3030/logout', {
+       
+    }).then(result => {
+        
+            localStorage.setItem("ourToken", null)
+          console.log("entrou else")
+           location.assign('/login')
+    
+    });
+
+}
 
 // function Flogin(){
 //     let user = {}
@@ -325,7 +339,7 @@ function mousesai9() {
     document.getElementById("imagemcor7").src = "../img/livros.png"
 }
 
-
+/*
 
 let btn = document.querySelector("#btn");
 let sidebar = document.querySelector(".sidebar");
@@ -336,4 +350,4 @@ btn.onclick = function () {
 }
 searchBtn.onclick = function () {
     sidebar.classList.togle("active");
-}
+}*/
