@@ -31,7 +31,10 @@ app.use('/perfil', rotaperfil);
 app.use('/home', rotahome);
 app.use('/erro', rotaerros);
 
-
+app.get('/home2',(req,res)=>{
+    res.sendFile(__basedir + '/public/pages/home.html');
+ 
+})
 
 
 app.get('/', (req, res) => {

@@ -11,43 +11,56 @@ router.get('/cadastro', (req, res) => {
 
 router.post('/cadastro', (req, res, next) => {
     mysql.getConnection((err, conn) => {
+
         if (err) { return res.status(500).send({ error: error }) }
 
         conn.query('SELECT * FROM usuario WHERE email = ?', [req.body.email], (error, results) => {
             if (error) { return res.status(500).send({ error: error }) }
             if (results.length > 0) {
-                res.status(409).send({ mensagem: 'Usuário já cadastrada' })
+                res.status(409).send({ mensagem: 'Email do usuário já cadastrada' })
             } else {
+                conn.query('SELECT * FROM usuario WHERE CPF = ?', [req.body.cpf], (error, results) => {
+                    if (error) { return res.status(500).send({ error: error }) }
+                    if (results.length > 0) {
+                        res.status(409).send({ mensagem: 'CPF do usuário já cadastrada' })
+                    } else {
 
-                bcrypt.hash(req.body.senha, 10, (errBcrypt, hash) => {
-                    if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
-                    conn.query(
-                        `INSERT INTO usuario (nome, email, cpf, telefone, senha) VALUES (?,?,?,?,?)`,
-                        [req.body.nome, req.body.email, req.body.cpf, req.body.telefone, hash],
-                        (error, results) => {
-                            conn.release();
-                            if (error) { return res.status(500).send({ error: error }) }
-                            response = {
-                                mensagem: 'Usuário criado com sucesso',
-                                usuarioCriado: {
-                                    id_usuario: results.insertId,
-                                    Nome: req.body.nome,
-                                    email: req.body.email,
-                                    cpf: req.body.cpf,
-                                    telefone: req.body.telefone,
-                                    id_tipo_cargo: req.body.id_tipo_cargo
+                        bcrypt.hash(req.body.senha, 10, (errBcrypt, hash) => {
+                            if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
+                            conn.query(
+                                `INSERT INTO usuario (nome, email, cpf, telefone, senha) VALUES (?,?,?,?,?)`,
+                                [req.body.nome, req.body.email, req.body.cpf, req.body.telefone, hash],
+                                (error, results) => {
+                                    conn.release();
+                                    if (error) { return res.status(500).send({ error: error }) }
+                                    response = {
+                                        mensagem: 'Usuário criado com sucesso',
+                                        usuarioCriado: {
+                                            id_usuario: results.insertId,
+                                            Nome: req.body.nome,
+                                            email: req.body.email,
+                                            cpf: req.body.cpf,
+                                            telefone: req.body.telefone,
+                                            id_tipo_cargo: req.body.id_tipo_cargo
+                        
+                                        }
+                                    }
+                                    return res.status(201).send(response)
+                                })
+                        });
+        
+          
+                    }
+                })
 
-                                }
-                            }
-                            return res.status(201).send(response)
-                        })
-                });
+  
             }
         })
     });
 });
 
 router.post('/login', (req, res, next) => {
+    console.log('entriu')
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         const query = `SELECT * FROM usuario WHERE email = ?`
@@ -223,4 +236,8 @@ router.get('/:email', (req, res, next) => {
 
 
 module.exports = router;
+  
+
+
+
 

@@ -6,7 +6,7 @@
         "MYSQL_HOST" : "localhost",
         "MYSQL_PORT" : 3306,
 
-        "ID_CLIENT" : "235715095816-g7c1qglfud2isfnbnmukifsuddvn2ubc.apps.googleusercontent.com",
+        "ID_CLIENT" : "1083578414306-dff76m6erbo1v3qn2s4cucjbm64aaoko.apps.googleusercontent.com",
 
         "JWT_KEY" : "segredo"
     }

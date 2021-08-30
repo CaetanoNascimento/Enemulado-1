@@ -1,4 +1,3 @@
-// const { response } = require("express")
 
 function mudaimagem() {
     document.getElementById("imagemcor").src = "./img/professor_color.png"
@@ -50,7 +49,6 @@ function mudatexto(elemento) {
         document.getElementById("myP").innerHTML = "Texto de Pepas"
         document.getElementById("titulo").innerHTML = "AAAAEEE"
 
-
     }
 
     if (nome == "Juan Euzinho") {
@@ -61,34 +59,144 @@ function mudatexto(elemento) {
     }
 
 }
+function jwt_login(){
+
+    let user = {
+        email: document.getElementById("login").value,
+        senha: document.getElementById("senha").value
+    };
+
+    alert(JSON.stringify(user));
+
+    let response = fetch('http://localhost:3030/usuarios/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            'Authorization': `${localStorage.getItem("ourToken")}`
+
+        },
+        body: JSON.stringify(user)
+    }).then(result => {      
+        if (result.ok) {   
+            return result.json()
+        } else {
+            localStorage.setItem("ourToken", null)
+            alert("Senha errada")
+        }
+    }).then(data => {
+      console.log(data)
+      
+        localStorage.setItem("ourToken", data.token)
+        location.assign('/home2')
+    });
+
+
+}
+
+function jwt_auth_load(){
+
+    console.log("authload")
+    fetch('http://localhost:3030/home/entrar', {
+        headers: {
+            'Authorization': `${localStorage.getItem("ourToken")}`
+        }
+    }).then(result => {
+        if (result.ok) {
+            return result.json()
+        } else {
+            // localStorage.setItem("ourToken", null)
+            console.log("entrou else")
+            location.assign('/login')
+        }
+    });
+
+}
+
+
+// function Flogin(){
+//     let user = {}
+//     user.email = document.getElementById("login").value;
+//     user.senha = document.getElementById("senha").value;
+//     console.log(user)
+
+//     if (validaCamposUser(user)) {
+//         console.log(user)
+//     }else {
+//         alert('senha incorreta');
+//     }
+
+// }
+
+// async function adicionarUser(user) {
+//     try {
+//            console.log("chegou no fetch")
+//         // fetch('http://localhost:3030/usuarios/login', {
+//         //     method: 'POST',
+//         //     body: JSON.stringify(user),
+//         //     headers: {
+//         //         "Content-Type": "application/json; charset=utf-8"
+//         //     }
+
+//         // }).then(result => {
+//         //     return result.json();
+//         // }).then(data => {
+//         //     console.log(data);
+//         // });
+
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// function validaCamposUser(user) {
+//     let msg = '';
+
+//     if (user.email == '') {
+//         msg += '- Informe o Email.  \n';
+//     }
+
+//     if (user.senha == '') {
+//         msg += '- Informe a Senha.\n';
+//     }
+
+//     if (msg != '') {
+//         alert(msg);
+//         return false
+//     }
+
+//     return true;
+// }
+
+
+
+
+
+
+
+
+
 
 function criar() {
-    /*console.log(document.getElementById("nome").value);
-    console.log(document.getElementById("email").value);
-    console.log(document.getElementById("cpf").value);
-    console.log(document.getElementById("telefone").value);
-    console.log(document.getElementById("senha").value);
-    console.log(document.getElementById("confirmar").value);*/
 
     let senha = document.getElementById("senha").value
     let confirmar = document.getElementById("confirmar").value
 
-    let login = {}
+    let cad = {}
 
-    login.nome = document.getElementById("nome").value;
-    login.email = document.getElementById("email").value;
-    login.cpf = document.getElementById("cpf").value;
-    login.telefone = document.getElementById("telefone").value;
-    login.senha = document.getElementById("senha").value;
-    login.confirmar = document.getElementById("confirmar").value
+    cad.nome = document.getElementById("nome").value;
+    cad.email = document.getElementById("email").value;
+    cad.cpf = document.getElementById("cpf").value;
+    cad.telefone = document.getElementById("telefone").value;
+    cad.senha = document.getElementById("senha").value;
+    cad.confirmar = document.getElementById("confirmar").value
 
 
     if (senha == confirmar) {
+        if (validaCampos(cad)) {
+            adicionar(cad)
 
-        adicionar(login)
+        }
         alert("conta criada")
-
-
 
     } else {
         alert('senha incorreta');
@@ -96,30 +204,12 @@ function criar() {
 
 }
 
-
-async function adicionar(login) {
+async function adicionar(cad) {
     try {
 
-        /*const formData = new FormData();
-        // const fileField = document.querySelector('input[type="file"]');
-
-        formData.append('nome', login.nome);
-        formData.append('email', login.email);
-        // formData.append('imagem_produto', fileField.files[0]);
-        formData.append('cpf', login.cpf);
-        formData.append('telefone', login.telefone);
-        formData.append('senha', login.senha);
-        formData.append('confirmar_senha', login.confirmar);
-
-        for (let [key, value] of formData.entries()) { 
-            console.log(key, value);
-          }
-*/
-
-
-        fetch('http://localhost:3000/cadastro', {
+        fetch('http://localhost:3030/usuarios/cadastro', {
             method: 'POST',
-            body: JSON.stringify(JSON.parse(login)),
+            body: JSON.stringify(cad),
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
             }
@@ -127,14 +217,47 @@ async function adicionar(login) {
         }).then(result => {
             return result.json();
         }).then(data => {
-            // this.listaTabela();
             console.log(data);
-            // this.arrayProdutos.push(produto);
         });
 
     } catch (error) {
         console.log(error);
     }
+}
+
+function validaCampos(cad) {
+    let msg = '';
+
+    if (cad.nome == '') {
+        msg += '- Informe o Nome.  \n';
+    }
+
+    if (cad.email == '') {
+        msg += '- Informe o Email.\n';
+    }
+
+    if (cad.cpf == '') {
+        msg += '- Informe um CPF. \n';
+    }
+
+    if (cad.telefone == '') {
+        msg += '- Informe um Telefone. \n';
+    }
+
+    if (cad.senha == '') {
+        msg += '- Informe uma Senha.  \n';
+    }
+
+    if (cad.confirmar == '') {
+        msg += '- Informe a senha novamente. \n';
+    }
+
+    if (msg != '') {
+        alert(msg);
+        return false
+    }
+
+    return true;
 }
 
 function mudaimagem4() {
@@ -146,10 +269,6 @@ function mudaimagem4() {
     foto.addEventListener('click', () => {
         file.click();
     });
-    function teste() {
-        fetch('https://localhost:3030/login')
-
-    }
 }
 
 function mousesai4() {
@@ -180,14 +299,11 @@ function mousesai7() {
     document.getElementById("imagemcor3").src = "../img/livros.png"
 }
 
-
 function mudaimagem8() {
     document.getElementById("imagemcor4").src = "../img/professor_color.png"
     document.getElementById("imagemcor5").src = "../img/molequinhocolor.png"
-    
-    
-
 }
+
 function mousesai8() {
     document.getElementById("imagemcor4").src = "../img/professor_uncolor.png"
     document.getElementById("imagemcor5").src = "../img/molequinho.png"
@@ -200,6 +316,7 @@ function mudaimagem9() {
     
 
 }
+
 function mousesai9() {
     document.getElementById("imagemcor6").src = "../img/mundo.png"
     document.getElementById("imagemcor7").src = "../img/livros.png"
