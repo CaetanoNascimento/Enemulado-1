@@ -1,111 +1,88 @@
-<html lang="en">
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Enemulado </title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="principal">
-        <div class="sidebar">
-            <div class="logo_content">
-                <div class="logo">
-                    <i class='bx bxl-c-plus-plus'></i>
-                    <div class="logo_name">condingLab</div>
-                </div>
-                <i class='bx bx-menu' id="btn"></i>
-            </div>
-            <ul class="nav_list">
-                <li>
-                    <i class='bx bx-search'></i>
-                    <input type="text" placeholder="search...">
-                    <span class="tooltip">search</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-grid-alt'></i>
-                        <span class="links_name">Dashbard</span>
-                    </a>
-                    <span class="tooltip">Dashboard</span>
+    <div class="sidebar">
+        <div class="logo-details">
 
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-user'></i>
-                        <span class="links_name">User</span>
-                    </a>
-                    <span class="tooltip">User</span>
+            <div class="logo_name"><img src="../img/logo_rodape.png" class="rodape"></div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="#">
+                    <img src="../img/perfil.png">
+                    <span class="links_name">MEU PERFIL</span>
+                </a>
+                <span class="tooltip">MEU PERFIL</span>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/computador.png">
+                    <span class="links_name">DASHBOARD</span>
+                </a>
+                <span class="tooltip">DASHBOARD</span>
+            </li>
 
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-chat'></i>
-                        <span class="links_name">Messages</span>
-                    </a>
-                    <span class="tooltip">Messages</span>
 
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-pie-chart-alt-2'></i>
-                        <span class="links_name">Analytics</span>
-                    </a>
-                    <span class="tooltip">Analytics</span>
-
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-folder'></i>
-                        <span class="links_name">File Manager</span>
-                    </a>
-                    <span class="tooltip">File Manager</span>
-
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-cart'></i>
-                        <span class="links_name">Order</span>
-                    </a>
-                    <span class="tooltip">Order</span>
-
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-heart'></i>
-                        <span class="links_name">Saved</span>
-                    </a>
-                    <span class="tooltip">Saved</span>
-
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-cog'></i>
-                        <span class="links_name">Setting</span>
-                    </a>
-                    <span class="tooltip">Setting</span>
-
-                </li>
-            </ul>
-            <div class="profile_content">
-                <div class="profile">
-                    <div class="profile_details">
-                        <img src="../img/burrinho.png">
-                        <div class="name_job">
-                            <div class="name">Prem shahi</div>
-                            <div class="job">Web designer</div>
-                        </div>
+            <li class="profile">
+                <div class="profile-details">
+                    <img src="../img/sair.png" profileImg>
+                    <div class="name_job">
+                        <div class="name">SAIR</div>
+                        <div class="job"></div>
                     </div>
-                    <i class='bx bx-log-out' id="log_out"></i>
                 </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+
+        <div class="row-1-dash editar">
+            <div class="col-12">
+                <span>EDITAR PERFIL E INFORMAÇÕES</span>
             </div>
-            
+            <div class="row-1-dash conta">
+                <div class="col-5 conta1">
+                    <div>
+                        <input type="text" id="nome" placeholder="Nome">
+                        <input type="text" id="email" placeholder="E-mail">
+                        <input type="number" id="cpf" placeholder="CPF">
+                        <input type="number" id="telefone" placeholder="Telefone">
+                    </div>
+
+                    <a href=""><button>Atualizar</button> </a>
+
+                    <a href="./esqueci.html"><button id="criar">Alterar Senha</button></a>
+                </div>
+                <div class="col-8 princ7">
+                    <img src="../img/imagem_principal7.png">
+                </div>
+
+
+
+            </div>
+
 
         </div>
-        <div class=" home_content">
-            <div class="text">Home Content</div>
-        </div>
+
+
+    
+
+    </section>
+
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

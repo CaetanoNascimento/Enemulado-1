@@ -1,49 +1,55 @@
-<html lang="en">
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enemulado</title>
-
+    <title> Enemulado </title>
     <link rel="stylesheet" href="../css/style.css">
-    <script type="text/javascript" src="../js/script.js"></script>
-
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div class="principal">
-        <div class="row-1">
+    <div class="sidebar">
+        <div class="logo-details">
 
-            <div class="listaLateral">
-                <div class="logo_content">
-                    <div class="logo">
-                        <img src="/img/menu.png" id="btn"></i>
-                        <div class="logo_nome">
-                            <img src="/img/logo_rodape.png">
-                        </div>
+            <div class="logo_name"><img src="../img/logo_rodape.png" class="rodape"></div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="#">
+                    <img src="../img/perfil.png">
+                    <span class="links_name">MEU PERFIL</span>
+                </a>
+                <span class="tooltip">MEU PERFIL</span>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/computador.png">
+                    <span class="links_name">DASHBOARD</span>
+                </a>
+                <span class="tooltip">DASHBOARD</span>
+            </li>
+
+
+            <li class="profile">
+                <div class="profile-details">
+                    <img src="../img/sair.png" profileImg>
+                    <div class="name_job">
+                        <div class="name">SAIR</div>
+                        <div class="job"></div>
                     </div>
-                    <ul class="lista">
-                        <li>
-                            <a href="#"></a>
-                            <img src="/img/perfil.png">
-                            <span class="links">MEU PERFIL</span>
-                        </li>
-                        <li>
-                            <a href="#"></a>
-                            <img src="/img/computador.png">
-                            <span class="links">DASHBOARD</span>
-                        </li>
-                    </ul>
                 </div>
-                <div class="sair">
-                    <img src="/img/sair.png">SAIR
-                </div>
-            </div>
-            <div class="row-1">
-                <div class="col-12 novinho ">
-                    <button class="novoSimulado">NOVO SIMULADO</button>
-                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="row-1">
+            <div class="col-12 novinho ">
+                <button class="novoSimulado">NOVO SIMULADO</button>
             </div>
         </div>
         <div class="row-1 azul">
@@ -70,7 +76,9 @@
                 <img id="burrozinho" src="../img/burrinho.png">
             </div>
         </div>
-    </div>
+
+        <script src="../js/script.js"></script>
+    </section>
 </body>
 
 </html>
