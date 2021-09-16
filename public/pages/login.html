@@ -25,7 +25,7 @@
             <div class="col-7">
                 <dl id="menu">
                     <dt><a href="/">INÍCIO</a></dt>
-                    <dt><a href="./quemsomos.html">QUEM SOMOS</a></dt>
+                    <dt><a href="/pages/esqueci">QUEM SOMOS</a></dt>
                     <img id="perfil" src="../img/Ellipse2.png">
                 </dl>
 
@@ -37,14 +37,14 @@
             <div class="col-6 login">
                 <h4>Entrar com:</h4>
                 <div>
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <div class="g-signin2" data-onsuccess="onSignIn" ></div>
                     <h4 id="ou">ou</h4>
                 </div>
                 <div class="lo">
                     <input type="text" id="login" placeholder="Login">
                     <input type="password" id="senha" placeholder="Senha">
                     <div class="esqueci">
-                        <a id="c" href="./esqueci.html">Esqueci minha senha</a>
+                        <a id="c" href="/pages/esqueci">Esqueci minha senha</a>
                     </div>
 
                     <a id="senha1"><button onclick="jwt_login()">Entrar</button></a>
@@ -67,7 +67,7 @@
         <div class="row-1 azul">
             <div class="col-6">
                 <dl>
-                    <dt><a href="quemsomos.html">QUEM SOMOS</a></dt>
+                    <dt><a href="/pages/quemsomos">QUEM SOMOS</a></dt>
                     <dt><a href="#CARREIRA">CARREIRA</a></dt>
                     <dt><a href="#ARAINS">A RAINS</a></dt>
                     <dt id="blog"><a href="#BLOG">BLOG</a></dt>
@@ -89,73 +89,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-        }
-
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-
-            var xhr = new XMLHttpRequest();
-
-            var id_token = googleUser.getAuthResponse().id_token;
-
-            var teste = profile.getEmail();
-            xhr.open('POST', '/login');
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onload = function () {
-
-                if (xhr.responseText == 'success') {
-
-                    fetch('http://localhost:3030/usuarios/' + teste, {
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-
-                            if (data.tamanho > 0) {
-
-                                try {
-
-                                    fetch('http://localhost:3030/usuarios/login', {
-                                        method: 'POST',
-                                        body: JSON.stringify({
-                                                            email: teste,
-                                                            google: true
-                                                        }),
-                                        headers: {
-                                            "Content-Type": "application/json; charset=utf-8"
-                                        }
-
-                                    }).then(result => {
-                                        return result.json();
-                                    }).then(data => {
-                                        console.log(data);
-                                        localStorage.setItem("ourToken", data.token)
-                                         location.assign('/home2')
-                                    });
-
-                                } catch (error) {
-                                    console.log(error);
-                                }
-
-                            } else {
-
-                                location.assign('/teste/cadastro')
-                            }
-                        })
-
-                    signOut();
-                }
-            };
-            xhr.send(JSON.stringify({ token: id_token }));
-            console.log()
-        }
-    </script>
 </body>
 
 </html>

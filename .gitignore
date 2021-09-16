@@ -1,15 +1,15 @@
-<<<<<<< HEAD
-node_modules/
-=======
 node_modules/
 
-nodemon
+
+nodemon/
 
 enemuladoSave
 
-<<<<<<< HEAD
+enemuladov2
+
+
+
 .vscode/
 =======
 aa
->>>>>>> ed2584bc435d50ee585773b20d8c1c45b8cece57
 >>>>>>> 8083eeee3a793df14e905883c603769c559515c1

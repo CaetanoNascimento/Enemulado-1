@@ -2,6 +2,10 @@ const route = require('express').Router();
 const { OAuth2Client } = require('google-auth-library');
 const CLIENT_ID = process.env.ID_CLIENT;
 const client = new OAuth2Client(CLIENT_ID);
+ 
+
+// checkagem de rota por meio errado "google"
+
 
 function checkAuthenticated(req, res, next){
 

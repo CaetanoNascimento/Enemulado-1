@@ -13,11 +13,11 @@ app.use(bodyParser.json());
 global.__basedir = __dirname;
 const rotaquestoes = require('./routes/questoes');
 const rotausuarios = require('./routes/usuarios');
-const rotalogin = require('./routes/login');
+const rotalogin_google = require('./routes/login_google');
 const rotalogout = require('./routes/logout');
 const rotaperfil = require('./routes/perfil');
 const rotahome = require('./routes/home');
-const rotaerros = require('./routes/erros');
+const rotapages = require('./routes/pages');
 
 const rotateste = require('./routes/teste')
 
@@ -25,16 +25,13 @@ app.use('/teste', rotateste)
 
 app.use('/questoes', rotaquestoes);
 app.use('/usuarios', rotausuarios);
-app.use('/login', rotalogin);
+app.use('/login', rotalogin_google);
 app.use('/logout', rotalogout);
 app.use('/perfil', rotaperfil);
 app.use('/home', rotahome);
-app.use('/erro', rotaerros);
+app.use('/pages', rotapages);
 
-app.get('/home2',(req,res)=>{
-    res.sendFile(__basedir + '/public/pages/home.html');
- 
-})
+
 
 
 app.get('/', (req, res) => {

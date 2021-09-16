@@ -59,7 +59,7 @@ function mudatexto(elemento) {
     }
 
 }
-function jwt_login(){
+function jwt_login() {
 
     let user = {
         email: document.getElementById("login").value,
@@ -76,8 +76,8 @@ function jwt_login(){
 
         },
         body: JSON.stringify(user)
-    }).then(result => {      
-        if (result.ok) {   
+    }).then(result => {
+        if (result.ok) {
             return result.json()
         } else {
             localStorage.setItem("ourToken", null)
@@ -86,17 +86,16 @@ function jwt_login(){
             document.getElementById('senha').value = '';
         }
     }).then(data => {
-      console.log(data)
-      
+        console.log(data)
+
         localStorage.setItem("ourToken", data.token)
-        location.assign('/home2')
+        location.assign('/usuarios/dashboard')
     });
 
 
 }
 
-function jwt_auth_load(){
-
+function jwt_auth_load() {
     console.log("authload")
     fetch('http://localhost:3030/home/entrar', {
         headers: {
@@ -107,60 +106,118 @@ function jwt_auth_load(){
             return result.json()
         } else {
             localStorage.setItem("ourToken", null)
-          console.log("entrou else")
-           location.assign('/login')
+            location.assign('/login')
         }
     });
 
 }
 
-function logout(){
+function logout() {
     fetch('http://localhost:3030/logout', {
-       
+
     }).then(result => {
+
+        localStorage.setItem("ourToken", null);
+
+        location.assign('/login');
         
-            localStorage.setItem("ourToken", null)
-          console.log("entrou else")
-           location.assign('/login')
-    
     });
+}
+
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+}
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+
+    var xhr = new XMLHttpRequest();
+
+    var id_token = googleUser.getAuthResponse().id_token;
+
+    var email2 = profile.getEmail();
+    xhr.open('POST', '/login');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+
+        if (xhr.responseText == 'success') {
+
+            fetch('http://localhost:3030/usuarios/' + email2, {
+            })
+                .then(response => response.json())
+                .then(data => {
+
+                    if (data.tamanho > 0) {
+
+                        try {
+
+                            fetch('http://localhost:3030/usuarios/login', {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    email: email2,
+                                    google: true
+                                }),
+                                headers: {
+                                    "Content-Type": "application/json; charset=utf-8"
+                                }
+
+                            }).then(result => {
+                                return result.json();
+                            }).then(data => {
+                                console.log(data);
+                                localStorage.setItem("ourToken", data.token)
+                                location.assign('/usuarios/dashboard')
+                            });
+
+                        } catch (error) {
+                            console.log(error);
+                        }
+
+                    } else {
+
+                        location.assign('/teste/cadastro')
+                    }
+                })
+
+            signOut();
+        }
+    };
+    xhr.send(JSON.stringify({ token: id_token }));
+    
+}
+
+
+
+// area de teste
+function testetoken() {
+    a = "Pedro Paulo"
+    b = "12312"
+
+    localStorage.setItem("Nome do usuario", a)
+    localStorage.setItem("id do usuario", b)
+    console.log("foi token sett")
 
 }
 
-// function Flogin(){
-//     let user = {}
-//     user.email = document.getElementById("login").value;
-//     user.senha = document.getElementById("senha").value;
-//     console.log(user)
+function limpartoken() {
+   
 
-//     if (validaCamposUser(user)) {
-//         console.log(user)
-//     }else {
-//         alert('senha incorreta');
-//     }
+    localStorage.setItem("Nome do usuario", null)
+    localStorage.setItem("id do usuario", null)
+    console.log("limpar token sett")
 
-// }
+}
 
-// async function adicionarUser(user) {
-//     try {
-//            console.log("chegou no fetch")
-//         // fetch('http://localhost:3030/usuarios/login', {
-//         //     method: 'POST',
-//         //     body: JSON.stringify(user),
-//         //     headers: {
-//         //         "Content-Type": "application/json; charset=utf-8"
-//         //     }
 
-//         // }).then(result => {
-//         //     return result.json();
-//         // }).then(data => {
-//         //     console.log(data);
-//         // });
 
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+
+
+
+
 
 // function validaCamposUser(user) {
 //     let msg = '';
@@ -343,21 +400,21 @@ let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
 
-closeBtn.addEventListener("click", ()=>{
-  sidebar.classList.toggle("open");
-  menuBtnChange();//calling the function(optional)
-});
+// closeBtn.addEventListener("click", ()=>{
+//   sidebar.classList.toggle("open");
+//   menuBtnChange();//calling the function(optional)
+// });
 
-searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-  sidebar.classList.toggle("open");
-  menuBtnChange(); //calling the function(optional)
-});
+// searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+//   sidebar.classList.toggle("open");
+//   menuBtnChange(); //calling the function(optional)
+// });
 
 // following are the code to change sidebar button(optional)
 function menuBtnChange() {
- if(sidebar.classList.contains("open")){
-   closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
- }else {
-   closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
- }
+    if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+    } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+    }
 }

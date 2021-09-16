@@ -5,6 +5,10 @@ const login = require('../middleware/login_mid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+router.get('/dashboard', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/dashboard.html');
+});
+
 router.get('/cadastro', (req, res) => {
     res.sendFile(__basedir + '/public/pages/cadastro.html');
 });
@@ -262,6 +266,8 @@ router.get('/:email', (req, res, next) => {
         )
     });
 })
+
+
 
 
 

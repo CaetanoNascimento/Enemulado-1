@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const login = require('../middleware/login_jwt');
+router.get('/tudo', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/simuladoB.html');
+});
 
 router.get('/400', (req, res) => {
     res.sendFile(__basedir + '/public/pages/400.html');
 });
 
-router.get('/404', (req, res) => {
+router.get('/404', login, (req, res) => {
     res.sendFile(__basedir + '/public/pages/404.html');
 });
 
@@ -29,7 +33,7 @@ router.get('/escolha', (req, res) => {
     res.sendFile(__basedir + '/public/pages/escolha.html');
 });
 
-router.get('/esqueci', (req, res) => {
+router.get('/esqueci', login, (req, res) => {
     res.sendFile(__basedir + '/public/pages/esqueci.html');
 });
 
@@ -48,11 +52,15 @@ router.get('/nota', (req, res) => {
 router.get('/perfil', (req, res) => {
     res.sendFile(__basedir + '/public/pages/perfil.html');
 });
-
+router.get('/perfil2', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/perfil2.html');
+});
 router.get('/quemsomos', (req, res) => {
     res.sendFile(__basedir + '/public/pages/quemsomos.html');
 });
-
+router.get('/dashboard', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/dashboard.html');
+});
 
 
 
