@@ -75,7 +75,6 @@ body{
 .principal{
 
   width: 1349px;
-  height: 5356px;
   /* padding-left: 50px; */
   /* padding-right: 50px; */
   background: #fff;
@@ -347,7 +346,7 @@ top: 2451.15px;
   list-style-type: none;
   overflow: hidden;
   padding-top: 40px;
-  width: 1364px;
+  width: 1340px;
 }
 .azul a{
   text-decoration: none;
@@ -362,7 +361,7 @@ top: 2451.15px;
 .azul dt{
   float: left;
   padding: 10px;
-  margin-left: 9px;
+  margin-left: -12px;
 }
 
 .me .alunos:hover{
@@ -677,15 +676,28 @@ padding-left: 12px;
   font-size: 16px;
 }
 .png{
-  margin-left: 114px;
-  padding-top: 45px;
+ margin-left: 114px;
+  padding-top: 45px; 
+  top: 50%;
+  left:50%;
 }
 .upload{
-  background: #C4C4C4;
   font-size: 16px;
-  border-radius: 25px;
-  width: 100px;
+  background: white;
+  border-radius: 50px;
+  box-shadow: 5px 5px 10px rgb(202, 202, 202);
+  width: 222px;
   outline: none;
+}
+
+::-webkit-file-upload-button{
+color:white;
+background: #63AAEB;
+padding: 20px;
+border: none;
+border-radius: 50px;
+box-shadow: 1px 0 1px 1px;
+outline: none;
 }
 .resposta{
   margin-left: 111px;
@@ -934,13 +946,13 @@ height: 233px;
   padding-left: 16px;
 }
 .bu{
-  width: 183px;
-  height: 48px; 
-background: #63AAEB;
-border-radius: 100px;
-border: none;
-color: #ffffff;
-margin-left: 20px;
+  width: 176px;
+  height: 48px;
+  background: #63AAEB;
+  border-radius: 100px;
+  border: none;
+  color: #ffffff;
+  margin-left: 39px;
 }
 
 .botoes{
