@@ -13,6 +13,41 @@ router.get('/cadastro', (req, res) => {
     res.sendFile(__basedir + '/public/pages/cadastro.html');
 });
 
+router.get('/perfil', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/perfil.html');
+});
+
+router.get('/simulados/:email', (req, res, next) => {
+    
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            ` SELECT simulados.id, tipo_simulado.nome as Tipo, nota_geral, usuario.nome, duracao from simulados
+                           INNER JOIN usuario
+                           ON simulados.id_usuario = usuario.id
+                           INNER JOIN tipo_simulado
+                           ON simulados.id_tipo_simulado = tipo_simulado.id
+                           WHERE usuario.email = ?`,
+                           [req.params.email],
+            (error, result, field) => {
+                conn.release();
+               
+              
+                console.table(result)
+ 
+                if (error) { return res.status(500).send({ error: error }) }
+    
+                const response = {
+                    simulados: result
+    
+                }
+              
+                return res.status(200).send(response)
+            }
+        )
+    });
+});
+
 router.post('/cadastro', (req, res, next) => {
     mysql.getConnection((err, conn) => {
 
@@ -132,7 +167,7 @@ router.post('/login', (req, res, next) => {
 
         });
     });
-})
+});
 
 router.post('/login_adm', (req, res, next) => {
     mysql.getConnection((error, conn) => {
@@ -172,9 +207,9 @@ router.post('/login_adm', (req, res, next) => {
 
         });
     });
-})
+});
 
-router.get('/lista', login.obrigatorio, (req, res, next) => {
+router.get('/lista', (req, res, next) => {
     console.log(req.usuario)
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
@@ -209,7 +244,7 @@ router.get('/lista', login.obrigatorio, (req, res, next) => {
             }
         )
     });
-})
+});
 
 router.get('/lista/:id_user', login.obrigatorio, (req, res, next) => {
     console.log(req.params.id_user)
@@ -265,7 +300,8 @@ router.get('/:email', (req, res, next) => {
             }
         )
     });
-})
+});
+
 
 
 

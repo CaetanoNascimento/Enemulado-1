@@ -89,6 +89,7 @@ function jwt_login() {
         console.log(data)
 
         localStorage.setItem("ourToken", data.token)
+        localStorage.setItem("email", document.getElementById("login").value)
         location.assign('/usuarios/dashboard')
     });
 
@@ -120,9 +121,11 @@ function logout() {
         localStorage.setItem("ourToken", null);
 
         location.assign('/login');
-        
+
     });
 }
+
+
 
 
 function signOut() {
@@ -187,7 +190,7 @@ function onSignIn(googleUser) {
         }
     };
     xhr.send(JSON.stringify({ token: id_token }));
-    
+
 }
 
 
@@ -204,18 +207,33 @@ function testetoken() {
 }
 
 function limpartoken() {
-   
-
     localStorage.setItem("Nome do usuario", null)
     localStorage.setItem("id do usuario", null)
     console.log("limpar token sett")
-
 }
 
 
 
 
+function Chamararraysimulados() {
+    arraysimulados = [];
+    fetch('http://localhost:3030/usuarios/simulados/' + localStorage.getItem("email"), {
+        method: 'GET'
+    })
+        .then(response => response.json())
 
+        .then(data => {
+            console.log(data.simulados)
+            
+            data.simulados.forEach(simu => {
+                arraysimulados.push(simu);
+            });
+        });
+    
+
+    console.log("arraysimulados")
+    console.log(arraysimulados)
+}
 
 
 
