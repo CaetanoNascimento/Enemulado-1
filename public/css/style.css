@@ -1,5 +1,5 @@
-
-
+@media only screen and (min-width: 600px){
+  
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -16,6 +16,7 @@
 
 .row-1 {width: 100%; display: flex;flex-direction: row;}
 .row-1-dash { display: flex;flex-direction: row;}
+.col-4-selec{width: 19.33%;}
 
 @font-face {
   font-family: 'bebas_neueregular';
@@ -62,6 +63,47 @@
   font-family: 'robotoitalic';
   src: url('../fonts/roboto-italic-webfont.woff2') format('woff2'),
        url('../fonts/roboto-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'quicksanddash';
+  src: url('../fonts/quicksand_dash-webfont.woff2') format('woff2'),
+       url('../fonts/quicksand_dash-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'quicksandlight_oblique';
+  src: url('../fonts/quicksand_light_oblique-webfont.woff2') format('woff2'),
+       url('../fonts/quicksand_light_oblique-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'quicksandbold_oblique';
+  src: url('../fonts/quicksand_bold_oblique-webfont.woff2') format('woff2'),
+       url('../fonts/quicksand_bold_oblique-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'quicksandbook_oblique';
+  src: url('../fonts/quicksand_book_oblique-webfont.woff2') format('woff2'),
+       url('../fonts/quicksand_book_oblique-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -260,7 +302,7 @@ body{
   width: 730px;
 }
 #imgcor2{
-  width: 730px;
+  margin-left: -54px;
 }
 
 
@@ -270,7 +312,6 @@ body{
   width: 465px;
   height: 164px;
   margin-top: -193px;
-  margin-left: 30px;
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
@@ -373,7 +414,7 @@ top: 2451.15px;
   margin-left: 130px;
 }
 #burrozinho{
-  margin-left: -128px;
+  margin-left: -133px;
 }
 .igs{
   margin-left: 100px;
@@ -638,8 +679,8 @@ padding-left: 12px;
   outline: none;
 }
 .questionario{
-  margin-left: 118px;
-  width: 1291px;
+  margin-left: 117px;
+  width: 1232px;
   margin-top: 30px;
 }
 .questionario1{
@@ -674,36 +715,52 @@ padding-left: 12px;
   margin-left: 111px;
   margin-top: 45px;
   font-size: 16px;
+  width: 1002px;
 }
 .png{
- margin-left: 114px;
-  padding-top: 45px; 
-  top: 50%;
-  left:50%;
+  margin-left: 116px;
+  padding-top: 45px;
+
 }
 .upload{
-  font-size: 16px;
-  background: white;
-  border-radius: 50px;
-  box-shadow: 5px 5px 10px rgb(202, 202, 202);
-  width: 222px;
-  outline: none;
+  font-size: 11px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px rgb(202 202 202);
+    width: 100px;
+    outline: none;
+
+}
+#borda{
+  width: 218px;
+  height: 48px;
+  left: 123px;
+  top: 931px;
+  
+  border: 1px solid #D5D7DC;
+  box-sizing: border-box;
+  border-radius: 6px;
 }
 
 ::-webkit-file-upload-button{
 color:white;
 background: #63AAEB;
-padding: 20px;
+padding: 10px;
 border: none;
 border-radius: 50px;
 box-shadow: 1px 0 1px 1px;
 outline: none;
+}
+
+::-webkit-file-upload-button:hover{
+  background: #3c8dda;
 }
 .resposta{
   margin-left: 111px;
   margin-top: 45px;
   font-size: 16px;
   display: block;
+  width: 1002px;
 }
 .resposta input{
   width: 1002px;
@@ -1214,8 +1271,199 @@ height: 34px;
   font-weight: 500;
   margin: 18px
 }
+.certo .certo1{
+  margin-left: -25px;
+  
+}
+.ok{
+  background: #C4C4C4;
+  width: 10px;
+  padding: 10px;
+  margin-top: 50px;
+  margin-left: 140px;
+  padding-right: 20px;
+  border: none;
+
+}
+.certo .ok:hover{
+  background: #63AAEB;
+
+}
+.certo span{
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pontuacao{
+  padding-left: 16px;
+  background: #F7F9FA;
+  border-radius: 16px;
+  width: 161px;
+  height: 118px;
+  margin-left: 70px;
+  margin-top: 42px;
+  line-height: 62px;
+}
+
+.grafico{
+  margin-left: 169px;
+  padding-top: 60px;
+}
+
+.simulado{
+  width: 150px;
+  height: 24px;
+  right: -82px;
+  top: calc(50% - 24px/2);
+  font-family: 'quicksandlight_oblique';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.44px;
+  color: #919699;
+  margin-left: 100px;
+  padding-top: 38px;
+}
+
+.linha{
+  border: 1px solid #E3E5E5;
+  width: 357px;
+  margin-top: 4px;
+  margin-left: 68px;
+}
+
+.todos{
+  border: 1px solid #E3E5E5;
+  margin-top: 4px;
+}
+
+.lado{
+  width: 103px;
+  height: 24px;
+  right: -82px;
+  top: calc(50% - 24px/2);
+  font-family: 'quicksandlight_oblique';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.44px;
+  color: #919699;
+  margin-left: 75px;
+  padding-top: 38px;
+}
+
+.excluir{
+  height: 43px;
+  width: 200px;
+  font-family: 'robotolight';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.15px;
+  margin-left: 73px;
+  color: rgba(0, 0, 0, 0.87);
+  padding-top: 11px;
+}
+
+#colorido{
+  color:rgb(214, 214, 75);
+}
+
+.resto{
+  height: 64px;
+  width: 200px;
+  font-family: 'robotolight';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.15px;
+  margin-left: 73px;
+  color: rgba(0, 0, 0, 0.87);
+  padding-top: 11px;
+}
+
+#resto1{
+  color: #FF0844;
+  height: 64px;
+  width: 200px;
+  font-family: 'robotolight';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  margin-left: 73px;
+  padding-top: 11px;
+  letter-spacing: 0.15px;
+
+}
+#resto2{
+  color: #2FA84F;
+  height: 64px;
+  width: 200px;
+  font-family: 'robotolight';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  margin-left: 73px;
+  padding-top: 11px;
+  letter-spacing: 0.15px;
+
+}
+
+#e{
+  color: rgba(0, 0, 0, 0.87);
+  margin-left: 73px;
+
+}
+#f{
+  color: rgba(255, 201, 23, 0.87);
+  margin-left: 73px;
+  font-weight: 700;
+
+}
+#g{
+  color: rgba(61, 152, 255, 0.87);
+  margin-left: 73px;
+  font-weight: 700;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 420px) {
   .sidebar li .tooltip{
     display: none;
   }
 }
+
+
+
