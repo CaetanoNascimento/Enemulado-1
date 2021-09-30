@@ -1,15 +1,10 @@
 node_modules/
 
+nodemon.json
 
-nodemon/
+enemuladoSave/
 
-enemuladoSave
-
-enemuladov2
-
-
+enemuladov2/
 
 .vscode/
-=======
-aa
->>>>>>> 8083eeee3a793df14e905883c603769c559515c1
+

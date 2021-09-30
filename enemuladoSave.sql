@@ -180,6 +180,26 @@ values (
         
     );
 
+    insert into simulados(id_tipo_simulado, id_usuario, data_inicio, data_final, duracao, nota_geral, status)
+values (8, 4, 1604, 1560, 0006, 200, true);
+
     insert into questoes(numero_questao, id_Materia, id_CorProva, id_AnoProva, id_instituicao, textoprincipal, textoquestao, alternativa_A, alternativa_B, alternativa_C, alternativa_D, alternativa_E, gabarito) 
 values
   (11, 8, 1, 21, 1,'Na sua imaginação perturbada sentia a natureza toda agitando-se para sufocá-la. Aumentavam as sombras. No céu, nuvens colossais e túmidas rolavam para o abismo do horizonte… Na várzea, ao clarão indeciso do crepúsculo, os seres tomavam ares de monstros… As montanhas, subindo ameaçadoras da terra, perfilavam-se tenebrosas… Os caminhos, espreguiçando-se sobre os campos, animavam-se quais serpentes infinitas… As árvores soltas choravam ao vento, como carpideiras fantásticas da natureza morta… Os aflitivos pássaros noturnos gemiam agouros com pios fúnebres. Maria quis fugir, mas os membros cansados não acudiam aos ímpetos do medo e deixavam-na prostrada em uma angústia desesperada.', 'No trecho, o narrador mobiliza recursos de linguagem que geram uma expressividade centrada na percepção da', 'relação entre a natureza opressiva e o desejo de libertação da personagem.', 'confluência entre o estado emocional da personagem e a configuração da paisagem.', 'prevalência do mundo natural em relação à fragilidade humana.', 'depreciação do sentido da vida diante da consciência da morte iminente.', 'instabilidade psicológica da personagem face à realidade hostil.', 'b');
+
+
+-- select com inner
+
+select usuario.nome, tipo_simulado.nome, nota_geral, duracao from simulados
+ inner join usuario
+ on simulados.id_usuario = usuario.id
+ inner join tipo_simulado
+ on simulados.id_tipo_simulado = tipo_simulado.id
+ where id_usuario = 4
+
+--  SELECT usuario.nome, tipo_simulado.nome, nota_geral, duracao from simulados
+--               INNER JOIN usuario
+--               ON simulados.id_usuario = usuario.id
+--               INNER JOIN tipo_simulado
+--               ON simulados.id_tipo_simulado = tipo_simulado.id
+--               WHERE id_usuario = 4

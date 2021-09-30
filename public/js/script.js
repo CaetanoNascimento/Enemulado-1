@@ -89,6 +89,7 @@ function jwt_login() {
         console.log(data)
 
         localStorage.setItem("ourToken", data.token)
+        localStorage.setItem("email", document.getElementById("login").value)
         location.assign('/usuarios/dashboard')
     });
 
@@ -123,6 +124,8 @@ function logout() {
 
     });
 }
+
+
 
 
 function signOut() {
@@ -204,18 +207,38 @@ function testetoken() {
 }
 
 function limpartoken() {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ab6bafb16c2e22f76a61ebb7e6a37b04b7c47d11
     localStorage.setItem("Nome do usuario", null)
     localStorage.setItem("id do usuario", null)
     console.log("limpar token sett")
-
 }
 
 
 
 
+function Chamararraysimulados() {
+    arraysimulados = [];
+    fetch('http://localhost:3030/usuarios/simulados/' + localStorage.getItem("email"), {
+        method: 'GET'
+    })
+        .then(response => response.json())
 
+        .then(data => {
+            console.log(data.simulados)
+            
+            data.simulados.forEach(simu => {
+                arraysimulados.push(simu);
+            });
+        });
+    
+
+    console.log("arraysimulados")
+    console.log(arraysimulados)
+}
 
 
 
