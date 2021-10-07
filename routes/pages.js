@@ -21,4 +21,8 @@ router.get('/escolha', (req, res) => {
     res.sendFile(__basedir + '/public/pages/escolha.html');
 });
 
+router.get('/simulado', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/simuladoB.html');
+});
+
 module.exports = router;

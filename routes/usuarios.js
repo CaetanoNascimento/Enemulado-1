@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql').pool;
-const login = require('../middleware/login_mid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -49,10 +48,8 @@ router.get('/simulados/:email', (req, res, next) => {
 });
 
 router.post('/cadastro', (req, res, next) => {
-    mysql.getConnection((err, conn) => {
-
-        if (err) { return res.status(500).send({ error: error }) }
-
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
         conn.query('SELECT * FROM usuario WHERE email = ?', [req.body.email], (error, results) => {
             if (error) { return res.status(500).send({ error: error }) }
             if (results.length > 0) {
@@ -99,8 +96,6 @@ router.post('/cadastro', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-    console.log('entriu')
-    console.log(req.body.email);
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         const query = `SELECT * FROM usuario WHERE email = ?`
@@ -108,7 +103,6 @@ router.post('/login', (req, res, next) => {
             conn.release();
             if (error) { return res.status(500).send({ error: error }) }
             if (results.length < 1) {
-                console.log('entriu 2')
                 return res.status(401).send({ mensagem: 'Falha na autenticação 1' })
             }
 
@@ -137,7 +131,6 @@ router.post('/login', (req, res, next) => {
             } else {
                 bcrypt.compare(req.body.senha, results[0].senha, (err, result) => {
                     if (err) {
-                        console.log('entriu 3')
                         return res.status(401).send({ mensagem: 'Falha na autenticação 2' })
                     }
                     if (result) {
@@ -210,7 +203,6 @@ router.post('/login_adm', (req, res, next) => {
 });
 
 router.get('/lista', (req, res, next) => {
-    console.log(req.usuario)
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
@@ -233,7 +225,7 @@ router.get('/lista', (req, res, next) => {
                             Request: {
                                 tipo: 'GET',
                                 descricao: 'Retorna os detalhes de uma questao específico',
-                                url: 'http://localhost:3000/usuarios/lista/' + listauser.id
+                                url: 'http://localhost:3030/usuarios/lista/' + listauser.email
 
                             }
                         }
@@ -246,19 +238,18 @@ router.get('/lista', (req, res, next) => {
     });
 });
 
-router.get('/lista/:id_user', login.obrigatorio, (req, res, next) => {
-    console.log(req.params.id_user)
+router.get('/lista/:email', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM usuario WHERE id = ?;',
-            [req.params.id_user],
+            'SELECT * FROM usuario WHERE email = ?;',
+            [req.params.email],
             (error, result, field) => {
                 if (error) { return res.status(500).send({ error: error }) }
 
                 if (result.length == 0) {
                     return res.status(404).send({
-                        mensagem: 'Não foi encontrado usuario com esse ID'
+                        mensagem: 'Não foi encontrado usuario com esse Email'
                     })
                 }
                 const response = {
@@ -274,7 +265,7 @@ router.get('/lista/:id_user', login.obrigatorio, (req, res, next) => {
                     Request: {
                         tipo: 'GET',
                         descricao: 'Retorna os produtos',
-                        url: 'http://localhost:3000/usuarios/lista'
+                        url: 'http://localhost:3030/usuarios/lista'
                     }
                 }
                 return res.status(201).send(response)

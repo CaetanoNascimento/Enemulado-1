@@ -86,10 +86,10 @@ function jwt_login() {
             document.getElementById('senha').value = '';
         }
     }).then(data => {
-        console.log(data)
+
 
         localStorage.setItem("ourToken", data.token)
-        localStorage.setItem("email", document.getElementById("login").value)
+        setarinfo(document.getElementById('login').value)
         location.assign('/usuarios/dashboard')
     });
 
@@ -97,7 +97,6 @@ function jwt_login() {
 }
 
 function jwt_auth_load() {
-    console.log("authload")
     fetch('http://localhost:3030/home/entrar', {
         headers: {
             'Authorization': `${localStorage.getItem("ourToken")}`
@@ -119,6 +118,14 @@ function logout() {
     }).then(result => {
 
         localStorage.setItem("ourToken", null);
+        localStorage.setItem("email_user", null);
+
+        localStorage.setItem("Id_user", null);
+        localStorage.setItem("Nome_user", null);
+        localStorage.setItem("Numero_user", null);
+        localStorage.setItem("CPF_user", null);
+        localStorage.setItem("Id_cargo_user", null);
+        localStorage.setItem("id_tipo_simulado", null);
 
         location.assign('/login');
 
@@ -171,8 +178,8 @@ function onSignIn(googleUser) {
                             }).then(result => {
                                 return result.json();
                             }).then(data => {
-                                console.log(data);
                                 localStorage.setItem("ourToken", data.token)
+                                setarinfo(email2)
                                 location.assign('/usuarios/dashboard')
                             });
 
@@ -196,22 +203,60 @@ function onSignIn(googleUser) {
 
 
 // area de teste
-function testetoken() {
-    a = "Pedro Paulo"
-    b = "12312"
 
-    localStorage.setItem("Nome do usuario", a)
-    localStorage.setItem("id do usuario", b)
-    console.log("foi token sett")
 
+
+function setarinfo(email) {
+
+    fetch('http://localhost:3030/usuarios/lista/' + email, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+
+        .then(data => {
+            localStorage.setItem("Id_user", data.usuario.id);
+            localStorage.setItem("email_user", email)
+            localStorage.setItem("Nome_user", data.usuario.Nome);
+            localStorage.setItem("Numero_user", data.usuario.Numero);
+            localStorage.setItem("CPF_user", data.usuario.Cpf)
+            localStorage.setItem("Id_cargo_user", data.usuario.id_tipo_cargo)
+        });
 }
 
-function limpartoken() {
-    localStorage.setItem("Nome do usuario", null)
-    localStorage.setItem("id do usuario", null)
-    console.log("limpar token sett")
+function simuladoCN() {
+    alert("simulado tipo teste")
 }
 
+function simuladoCH() {
+    localStorage.setItem("id_tipo_simulado", 1);
+
+    // alert("simulado tipo 1")
+    chamarquetoes(1);
+}
+
+
+function chamarquetoes(id_AreaConhecimento) {
+    arrayquestao = [];
+    fetch('http://localhost:3030/questoes/' + id_AreaConhecimento, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+
+        .then(data => {
+            data.questao1.forEach(quest => {
+                arrayquestao.push(quest);
+            });
+            console.log(arrayquestao)
+            location.assign('/pages/simulado')
+            document.getElementById('textopredo').value = '';
+        });
+}
+
+
+function teste() {
+    alert("modify euzin")
+    document.getElementById('textopredo').value = 'eizin';
+}
 
 
 
@@ -224,12 +269,12 @@ function Chamararraysimulados() {
 
         .then(data => {
             console.log(data.simulados)
-            
+
             data.simulados.forEach(simu => {
                 arraysimulados.push(simu);
             });
         });
-    
+
 
     console.log("arraysimulados")
     console.log(arraysimulados)
@@ -418,15 +463,15 @@ let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
 
-// closeBtn.addEventListener("click", ()=>{
-//   sidebar.classList.toggle("open");
-//   menuBtnChange();//calling the function(optional)
-// });
+closeBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+});
 
-// searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-//   sidebar.classList.toggle("open");
-//   menuBtnChange(); //calling the function(optional)
-// });
+searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+});
 
 // following are the code to change sidebar button(optional)
 function menuBtnChange() {
