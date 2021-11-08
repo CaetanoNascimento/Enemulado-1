@@ -945,6 +945,10 @@ outline: none;
   margin-left: 45px;
     padding-top: 45px;
 }
+.novinho a{
+  text-decoration: none;
+  color: white;
+}
 
 .questao{
   font-family: 'robotolight';
