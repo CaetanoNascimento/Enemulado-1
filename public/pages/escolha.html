@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body  onload="jwt_auth_load()">
     <div class="principal">
         <div class="row-1">
             <div class="col-5" id=logo>
@@ -36,35 +36,35 @@
 
         <div class="row-1 mouse">
             <div class="col-7 muda">
-                <div onmouseover="mudaimagem4()" onmouseleave="mousesai4()" class="col-3 acor">
-                    <img onclick="simuladoCN()" id="imagemcor" src="../img/professor_uncolor.png">
+                <div onclick="simuladoCN()" onmouseover="mudaimagem4()" onmouseleave="mousesai4()" class="col-3 acor">
+                    <img  id="imagemcor" src="../img/professor_uncolor.png">
                     <span>CIÊNCIAS DA NATUREZA</span>
                 </div>
 
-                <div onmouseover="mudaimagem5()" onmouseleave="mousesai5()" class="col-3 acor">
-                    <img  onclick="simuladoCH()" id="imagemcor1" src="../img/mundo.png">
+                <div onclick="simuladoCH()" onmouseover="mudaimagem5()" onmouseleave="mousesai5()" class="col-3 acor">
+                    <img id="imagemcor1" src="../img/mundo.png">
                     <span>CIÊNCIAS HUMANAS</span>
 
                 </div>
                 <div class="col-5 muda">
-                    <div onmouseover="mudaimagem6()" onmouseleave="mousesai6()" class="col-3 acor">
+                    <div onclick="simuladoMT()" onmouseover="mudaimagem6()" onmouseleave="mousesai6()" class="col-3 acor">
                         <img id="imagemcor2" src="../img/molequinho.png">
                         <span>MATEMATICA</span>
                     </div>
 
-                    <div onmouseover="mudaimagem7()" onmouseleave="mousesai7()" class="col-3 acor">
+                    <div onclick="simuladoLC()" onmouseover="mudaimagem7()" onmouseleave="mousesai7()" class="col-3 acor">
                         <img id="imagemcor3" src="../img/livros.png">
                         <span>LINGUAGENS E CÓDIGOS</span>
                     </div>
                 </div>
                 <div class="row-1 mudado ">
-                    <div onmouseover="mudaimagem9()" onmouseleave="mousesai9()" class="col-12 mudeiiiii">
+                    <div onclick="simuladoD1()" onmouseover="mudaimagem9()" onmouseleave="mousesai9()" class="col-12 mudeiiiii">
                         <h2>PRIMEIRO DIA </h2>
                         <img id="imagemcor6" src="../img/mundo.png"> <img  id="imagemcor7" src="../img/livros.png">
                         <span>CIÊNCIAS HUMANAS</span> <span>LINGUAGENS E CÓDIGOS</span>
 
                     </div>
-                    <div onmouseover="mudaimagem8()" onmouseleave="mousesai8()"class="col-12 mudeiiiii">
+                    <div onclick="simuladoD2()" onmouseover="mudaimagem8()" onmouseleave="mousesai8()"class="col-12 mudeiiiii">
                         <h2>SEGUNDO DIA </h2>
                         <img id ="imagemcor4"src="../img/professor_uncolor.png"> <img id="imagemcor5"src="../img/molequinho.png">
                         <span>CIÊNCIAS DA NATUREZA</span> <span>MATEMATICA</span>

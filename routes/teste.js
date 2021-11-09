@@ -59,7 +59,7 @@ router.get('/quemsomos', (req, res) => {
     res.sendFile(__basedir + '/public/pages/quemsomos.html');
 });
 router.get('/dashboard', (req, res) => {
-    res.sendFile(__basedir + '/public/pages/dashboard.html');
+    res.sendFile(__basedir + '/public/pages/dashboard2.html');
 });
 
 

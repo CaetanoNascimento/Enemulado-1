@@ -22,7 +22,10 @@ router.get('/escolha', (req, res) => {
 });
 
 router.get('/simulado', (req, res) => {
-    res.sendFile(__basedir + '/public/pages/simuladoB.html');
+    res.sendFile(__basedir + '/public/pages/simuladoc.html');
 });
 
+router.get('/simuladob', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/simuladob.html');
+});
 module.exports = router;

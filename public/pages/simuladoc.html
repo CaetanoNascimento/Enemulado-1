@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enemulado</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/styleMobile.css">
+</head>
+
+<body onload="jwt_auth_load();setar_ID_simu()">
+
+
+    <div id="innerHTMLtxt"></div>
+    <div id="textContenttxt">
+        <div>
+            <div class="principal">
+                <div class="row-1">
+                    <div class="col-5" id=logo>
+                        <button><a href="/"><img src="../img/logo1.png"></a></button>
+
+                    </div>
+                    <div class="col-7">
+                        <dl id="menu">
+                            <a href=""><img id="perfil" src="../img/Ellipse2.png"></a>
+                        </dl>
+
+                    </div>
+
+                </div>
+                <div class="row-1">
+
+                    <div class="col-7 questao">
+                      
+                       
+                        
+                        <div class="titulo">
+
+
+                            <span class="titulo1" id="numeroquestao">NÚMERO:</span>
+                            <span class="titulo1" id="nomeinstituicao">INSTITUIÇÂO:</span>
+                            <span class="titulo1" id="corprova">PROVA:</span>
+                            <span class="titulo1" id="anoprova">ANO:</span>
+
+                        </div>
+
+                        <div id="textoprincipal"></div>
+
+                        <div id="imgprova"></div>
+
+                        <div id="textoquestao"></div>
+
+                        <span class="alternativas">A</span>
+                        <div onclick="resposta_A()" id="alternativa_A" class="respostaaa">
+                        </div>
+
+                        <span class="alternativas">B</span>
+                        <div onclick="resposta_B()" id="alternativa_B" class="respostaaa">
+                        </div>
+
+                        <span class="alternativas">C</span>
+                        <div onclick="resposta_C()" id="alternativa_C"  class="respostaaa">
+                        </div>
+
+                        <span class="alternativas">D</span>
+                        <div onclick="resposta_D()" id="alternativa_D" class="respostaaa">
+                        </div>
+
+                        <span class="alternativas">E</span>
+                        <div onclick="resposta_E()" id="alternativa_E" class="respostaaa">
+                        </div>
+
+                        <div class="botoes">
+                            <button onclick="salvar_e_verificar()" class="bu u">Verificar Resposta</button>
+                            <button onclick="salvar_e_passar_Resposta()" class="bu"> Proxima Pergunta</button>
+                            <button onclick="simulado_banco()" class="bu u">finalizar Resposta</button>
+                        </div>
+
+                    </div>
+                    <div class="col-5 prooo">
+                        <img id="prooo1" src="../img/prooo.png">
+                        <img id="prooo1" src="../img/prooo.png">
+                    </div>
+                </div>
+
+                <div class="row-1 azul quatro">
+                    <div class="col-6">
+                        <dl>
+                            <dt><a href="/pages/quemsomos">QUEM SOMOS</a></dt>
+                            <dt><a href="#CARREIRA">CARREIRA</a></dt>
+                            <dt><a href="#ARAINS">A RAINS</a></dt>
+                            <dt id="blog"><a href="#BLOG">BLOG</a></dt>
+                            <dt><a href="#CONTATO">CONTATO</a></dt>
+                        </dl>
+                        <div class="igs">
+                            <img src="../img/S.png">
+                            <img src="../img/IN.png">
+                            <img src="../img/INSTA.png">
+                            <img src="../img/TWIT.png">
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+                    <div class="col-6 EB">
+                        <button><a href="/"><img id="enemuladinho" src="../img/logo_rodape.png"></a></button>
+                        <img id="burrozinho" src="../img/burrinho.png">
+                    </div>
+                </div>
+
+            </div>
+
+
+
+</body>
+
+</html>

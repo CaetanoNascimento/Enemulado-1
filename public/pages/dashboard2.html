@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body onload="jwt_auth_load()">
+<body  onload="jwt_auth_load()">
     <div class="sidebar">
         <div class="logo-details">
 
@@ -49,7 +49,7 @@
     <section class="home-section">
         <div class="row-1">
             <div class="col-12 novinho ">
-                <button  class="novoSimulado"> <a href="/pages/escolha">NOVO SIMULADO</a> </button>
+                <button class="novoSimulado"> <a href="/pages/escolha">NOVO SIMULADO</a> </button>
                 <button class="novoSimulado">NOVO SIMULADO</button>
             </div>
         </div>
@@ -76,7 +76,7 @@
         </div>
         <div class="row-1">
             <div class="col-12 grafico">
-                <img src="../img/image_principal10.png">
+                <canvas width="750" id="myChart"></canvas>
             </div>
         </div>
 
@@ -85,21 +85,21 @@
                 <span class="simulado">Simulado</span>
                 <div class="linha"></div>
                 <span class="excluir">Ciencias da Natureza</span>
-                    <span id="e">Excluir</span>
-                
+                <span id="e">Excluir</span>
+
 
                 <div class="linha"></div>
                 <span class="excluir">Matematica</span>
-                   <span id="f"> Excluir</span>
+                <span id="f"> Excluir</span>
 
                 <div class="linha"></div>
                 <span class="excluir">Linguagens e Codigos</span>
-                    <span id="g">Excluir</span>
+                <span id="g">Excluir</span>
 
                 <div class="linha"></div>
                 <span class="excluir">Ciencias da Natureza</span>
-                   <span id="g">Excluir</span>
-                
+                <span id="g">Excluir</span>
+
             </div>
 
             <div class="col-9">
@@ -117,7 +117,7 @@
 
                         <div class="todos"></div>
                         <span id="resto2">26/04/2011</span>
-                       
+
 
                     </div>
 
@@ -135,7 +135,7 @@
                         <div class="todos"></div>
                         <span class="resto">Filosofia</span>
 
-                       
+
                     </div>
 
                     <div class="col-2">
@@ -188,12 +188,59 @@
                 </div>
             </div>
         </div>
-       
 
 
 
-        <script src="../js/script.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" src="../js/script.js"></script>
+        <script>
+            const labels = [
+                'data do simulado1 ',
+                'data do simulado2 ',
+                'data do simulado3 ',
+                'data do simulado4 ',
+            ];
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'CIÊNCIAS DA NATUREZA',
+                    backgroundColor: '#73DA73',
+                    borderColor: '#73DA73',
+                    data: [20, 10, 5, 2, 20, 30, 45],
+                },{
+                    label: 'CIÊNCIAS HUMANAS',
+                    backgroundColor: '#E7EC49',
+                    borderColor: '#E7EC49',
+                    data: [24, 1, 16, 2, 20, 30, 45],
+                },{
+                    label: 'MATEMÁTICA',
+                    backgroundColor: '#3B91E7',
+                    borderColor: '#3B91E7',
+                    data: [14, 20, 36, 32, 40, 30, 45],
+                },{
+                    label: 'LINGUAGENS E CÓDIGOS',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [7, 9, 26, 5, 20, 30, 45],
+                }]
+            };
+            const config = {
+                type: 'line',
+                data: data,
+                options: {}
+            };
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
+
+        </script>
+
     </section>
 </body>
+
 
 </html>

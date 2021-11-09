@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql').pool;
-const login = require('../middleware/login_mid');
+
 
 
 
@@ -19,7 +19,8 @@ router.get('/', (req, res, next) => {
                     produtos: result.map(qts => {
                         return {
                             questao: {
-                                id_questao: qts.id,
+                                numero: qts.numero_questao,
+                                id_questao: qts.id_questao,
                                 id_materia: qts.id_Materia,
                                 id_corprova: qts.id_CorProva,
                                 id_anoprova: qts.id_AnoProva,
@@ -52,15 +53,17 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:id_AreaConhecimento', login.obrigatorio, (req, res, next) => {
+router.get('/:id_AreaConhecimento1', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
             `SELECT * FROM questoes
             INNER JOIN materia
             ON questoes.id_Materia  = materia.id
-            WHERE materia.id_AreaConhecimento = ?;`,
-            [req.params.id_AreaConhecimento],
+             INNER JOIN instituicao
+            ON questoes.id_instituicao = instituicao.id
+            WHERE materia.id_AreaConhecimento In (?);`,
+            [req.params.id_AreaConhecimento1],
             (error, result, field) => {
                 if (error) { return res.status(500).send({ error: error }) }
 
@@ -72,11 +75,65 @@ router.get('/:id_AreaConhecimento', login.obrigatorio, (req, res, next) => {
                 const response = {
                     questao1: result.map(qts => {
                         return {
-                                id_questao: qts.id,
+                                id_questao: qts.id_questao,
+                                numero: qts.numero_questao,
                                 id_materia: qts.id_Materia,
                                 id_corprova: qts.id_CorProva,
                                 id_anoprova: qts.id_AnoProva,
-                                id_instituicao: qts.id_instituicao,
+                                instituicao: qts.nome_instituicao,
+                                textoprincipal: qts.textoprincipal,
+                                textoquestao: qts.textoquestao,
+                                img_top: qts.Img_Top,
+                                img_central: qts.Img_Central,
+                                img_final: qts.Img_Final,
+                                alternativa_A: qts.alternativa_A,
+                                alternativa_B: qts.alternativa_B,
+                                alternativa_C: qts.alternativa_C,
+                                alternativa_D: qts.alternativa_D,
+                                alternativa_E: qts.alternativa_E,
+                                Gabarito: qts.gabarito,
+                            
+                        }
+              
+                    }),
+
+
+                }
+                return res.status(201).send(response)
+            }
+        )
+    });
+
+});
+
+router.get('/dia1/:v1/:v2', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            `SELECT * FROM questoes
+            INNER JOIN materia
+            ON questoes.id_Materia  = materia.id
+             INNER JOIN instituicao
+            ON questoes.id_instituicao = instituicao.id
+            WHERE materia.id_AreaConhecimento In (?, ?);`,
+            [req.params.v1, req.params.v2],
+            (error, result, field) => {
+                if (error) { return res.status(500).send({ error: error }) }
+
+                if (result.length == 0) {
+                    return res.status(404).send({
+                        mensagem: 'Não foi encontrado questoes com esse ID de simulado'
+                    })
+                }
+                const response = {
+                    questao1: result.map(qts => {
+                        return {
+                                id_questao: qts.id_questao,
+                                numero: qts.numero_questao,
+                                id_materia: qts.id_Materia,
+                                id_corprova: qts.id_CorProva,
+                                id_anoprova: qts.id_AnoProva,
+                                instituicao: qts.nome_instituicao,
                                 textoprincipal: qts.textoprincipal,
                                 textoquestao: qts.textoquestao,
                                 img_top: qts.Img_Top,
