@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id"
+        content="1083578414306-dff76m6erbo1v3qn2s4cucjbm64aaoko.apps.googleusercontent.com">
+    <title>Enemulado</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleMobile.css">
+    <script type="text/javascript" src="../js/script.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</head>
+
+<body>
+    <div class="principal">
+        <div class="row-1">
+            <div class="col-5" id=logo>
+                <button><a href="/"><img src="../img/logo1.png"></a></button>
+
+            </div>
+
+            <div class="col-7">
+                <dl id="menu">
+                    <dt><a href="/">INÍCIO</a></dt>
+                    <dt><a href="/pages/quemsomos">QUEM SOMOS</a></dt>
+                    <img id="perfil" src="../img/Ellipse2.png">
+                </dl>
+
+            </div>
+
+        </div>
+
+        <div class="row-1 ">
+            <div class="col-6 login">
+                <h4>Entrar com:</h4>
+                <div>
+                    <div class="g-signin2" data-onsuccess="onSignIn" ></div>
+                    <h4 id="ou">ou</h4>
+                </div>
+                <div class="lo">
+                    <input type="text" id="login" placeholder="Login">
+                    <input type="password" id="senha" placeholder="Senha">
+                    <div class="esqueci">
+                        <a id="c" href="/pages/esqueci">Esqueci minha senha</a>
+                    </div>
+
+                    <a id="senha1"><button onclick="jwt_login()">Entrar</button></a>
+                </div>
+
+                <div>
+                    <a id="senha1" href="/usuarios/cadastro"><button id="criar">Criar conta</button></a>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-6 login2 login3">
+                <img src="../img/imagem_principal4.png">
+            </div>
+
+        </div>
+
+        <div class="row-1 azul quatro">
+            <div class="col-6">
+                <dl>
+                    <dt><a href="/pages/quemsomos">QUEM SOMOS</a></dt>
+                    <dt><a href="#CARREIRA">CARREIRA</a></dt>
+                    <dt><a href="#ARAINS">A RAINS</a></dt>
+                    <dt id="blog"><a href="#BLOG">BLOG</a></dt>
+                    <dt><a href="#CONTATO">CONTATO</a></dt>
+                </dl>
+                <div class="igs">
+                    <img src="../img/S.png">
+                    <img src="../img/IN.png">
+                    <img src="../img/INSTA.png">
+                    <img src="../img/TWIT.png">
+
+                </div>
+
+            </div>
+
+            <div class="col-6 EB">
+                <button><a href="/"><img id="enemuladinho" src="../img/logo_rodape.png"></a></button>
+                <img id="burrozinho" src="../img/burrinho.png">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
