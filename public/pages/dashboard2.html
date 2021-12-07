@@ -9,9 +9,15 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+   
+
+    
 </head>
 
-<body  onload="jwt_auth_load()">
+<body onload="mudar_valor_1_4()">
     <div class="sidebar">
         <div class="logo-details">
 
@@ -76,7 +82,7 @@
         </div>
         <div class="row-1">
             <div class="col-12 grafico">
-                <canvas width="750" id="myChart"></canvas>
+                <canvas id="myChart"></canvas>
             </div>
         </div>
 
@@ -187,57 +193,12 @@
                     </div>
                 </div>
             </div>
+
         </div>
-
-
-
-
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.1/dist/chart.min.js"></script>
         <script type="text/javascript" src="../js/script.js"></script>
-        <script>
-            const labels = [
-                'data do simulado1 ',
-                'data do simulado2 ',
-                'data do simulado3 ',
-                'data do simulado4 ',
-            ];
-            const data = {
-                labels: labels,
-                datasets: [{
-                    label: 'CIÊNCIAS DA NATUREZA',
-                    backgroundColor: '#73DA73',
-                    borderColor: '#73DA73',
-                    data: [20, 10, 5, 2, 20, 30, 45],
-                },{
-                    label: 'CIÊNCIAS HUMANAS',
-                    backgroundColor: '#E7EC49',
-                    borderColor: '#E7EC49',
-                    data: [24, 1, 16, 2, 20, 30, 45],
-                },{
-                    label: 'MATEMÁTICA',
-                    backgroundColor: '#3B91E7',
-                    borderColor: '#3B91E7',
-                    data: [14, 20, 36, 32, 40, 30, 45],
-                },{
-                    label: 'LINGUAGENS E CÓDIGOS',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [7, 9, 26, 5, 20, 30, 45],
-                }]
-            };
-            const config = {
-                type: 'line',
-                data: data,
-                options: {}
-            };
-            const myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
-
-
-        </script>
+        <script type="text/javascript" src="../js/main.js"></script>
 
     </section>
 </body>

@@ -1,4 +1,3 @@
-
 function mudaimagem() {
     document.getElementById("imagemcor").src = "./img/professor_color.png"
 
@@ -59,6 +58,9 @@ function mudatexto(elemento) {
     }
 
 }
+
+
+
 function jwt_login() {
 
     let user = {
@@ -111,6 +113,22 @@ function jwt_auth_load() {
     });
 
 }
+// funct retornar da PAg-login para dashboard quando tiver logado. 
+function jwt_auth_load_login() {
+    fetch('http://localhost:3030/home/entrar', {
+        headers: {
+            'Authorization': `${localStorage.getItem("ourToken")}`
+        }
+    }).then(result => {
+        if (result.ok) {
+            console.log(result)
+            console.log('uepa')
+            // location.assign('/usuarios/dashboard')
+            return result.json()
+
+        }
+    });
+}
 
 function logout() {
     fetch('http://localhost:3030/logout', {
@@ -126,6 +144,7 @@ function logout() {
         localStorage.setItem("CPF_user", null);
         localStorage.setItem("Id_cargo_user", null);
         localStorage.setItem("id_tipo_simulado", null);
+        localStorage.clear();
 
         location.assign('/login');
 
@@ -197,12 +216,6 @@ function onSignIn(googleUser) {
 
 }
 
-
-
-
-
-
-
 function setarinfo(email) {
 
     fetch('http://localhost:3030/usuarios/lista/' + email, {
@@ -250,13 +263,11 @@ function simuladoD2() {
     location.assign('/pages/simulado')
 }
 
-
 var arrayquestao = [];
 var arrayquestao_geral = [];
 
-//iniciar simulado front e back
 function gerarsimulado(id_tipo_simulado) {
-    // simulado_banco();
+    simulado_banco();
 
     if (id_tipo_simulado < 5) {
         fetch('http://localhost:3030/questoes/' + id_tipo_simulado, {
@@ -266,11 +277,18 @@ function gerarsimulado(id_tipo_simulado) {
 
             .then(data => {
                 data.questao1.forEach(quest => {
+                    fetch('http://localhost:3030/questoes/' + id_tipo_simulado, {
+                        method: 'GET'
+                    })
                     arrayquestao_geral.push(quest);
-                });
-                for (var af = 0; af < 15; af++) {
-                    arrayquestao.push(arrayquestao_geral[af])
 
+                });
+                console.log('asdasdsad')
+
+
+                for (var af = 0; af < 15; af++) {
+                    // arrayquestao.push(arrayquestao_geral[Math.floor(Math.random() * arrayquestao_geral.length)])
+                    arrayquestao.push(arrayquestao_geral[af])
                 }
                 console.table(arrayquestao)
                 fazersimulado();
@@ -323,100 +341,102 @@ function setar_ID_simu() {
 }
 
 function simulado_banco() {
-    // var inform = {
-    //     id_tipo_simulado: localStorage.getItem("id_tipo_simulado"),
-    //     id_usuario: localStorage.getItem("Id_user"),
-    //     data_inicio: new Date().toLocaleString(),
-    //     data_final: "0000/00/00 00:00:00",
-    //     duracao: "00:00:00",
-    //     status: 1
-    // };
+    var tempo1 = new Date().toLocaleString();
+    tempo1 = tempo1.replace('/', '-')
+    tempo1 = tempo1.replace('/', '-')
 
+    let cad2 = {}
 
-    const formData = new FormData();
-    formData.append('id_tipo_simulado', localStorage.getItem("id_tipo_simulado"));
-    formData.append('id_usuario', localStorage.getItem("Id_user"));
-    formData.append('data_inicio', new Date().toLocaleString());
-    formData.append('data_final', '0000/00/00 00:00:00');
-    formData.append('duracao', "00:00:00");
-    formData.append('nota_geral', 0);
-    formData.append('status', 0);
+    cad2.id_tipo_simulado = parseFloat(localStorage.getItem("id_tipo_simulado"));
+    cad2.id_usuario = parseFloat(localStorage.getItem("Id_user"));
+    cad2.data_inicio = tempo1;
+    cad2.data_final = '00-00-0000 00:00:00';
+    cad2.duracao = "00:00:00";
+    cad2.nota_geral = 0;
+    cad2.status = 0;
 
-    let teste = {};
-    formData.forEach((value, key) => teste[key] = value);
-    let dados = JSON.stringify(teste);
-    console.log("teste aqui");
-    console.log(teste);
+    try {
 
-    console.log("dados aqui");
-    console.log(dados);
+        fetch('http://localhost:3030/simulado', {
+            method: 'POST',
+            body: JSON.stringify(cad2),
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            }
 
+        }).then(result => {
+            return result.json();
+        }).then(data => {
 
+            localStorage.setItem("id_simulado", data.id_simulado);
+            data_inicio_banco();
+        });
 
-    fetch("http://localhost:3030/simulado/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(teste)
-        // 
-
-
-        //Pegar ID simulado e colocar no LocalStorage 
-
-        // localStorage.setItem("id_simulado", data.insertID)
-
-
-    });
+    } catch (error) {
+        console.log(error);
+    }
 
 
 }
 
 function simulado_questao(arrayresposta, arraygabarito) {
     for (var ad = 0; ad < arrayresposta.length; ad++) {
-        var inform2 = {
-            id_simulado: localStorage.getItem("id_simulado"),
-            id_questoes: arrayresposta[ad].id_questao,
-            resposta_usuario: arrayresposta[ad].resposta,
-            status: 1
-        };
+        let inform2 = {}
+        inform2.id_simulado = localStorage.getItem("id_simulado"),
+            inform2.id_questoes = arrayresposta[ad].id_questao,
+            inform2.resposta_usuario = arrayresposta[ad].resposta,
+            inform2.status = 1
+        try {
+            fetch('http://localhost:3030/simulado/questao', {
+                method: 'POST',
+                body: JSON.stringify(inform2),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
 
-        // fetch("http://localhost:3030/simulado/questao", {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        //     },
-        //     body: inform2
-        console.log(inform2)
+            }).then(result => {
+                return result.json();
+            })
+        } catch (error) {
+            console.log(error);
+        }
+
 
     }
     finalizar_simu();
 
-
 }
 
 function finalizar_simu() {
-    let inform3 = {
-        id_simulado: 3,
-        nota_geral: analisar_resposta(),
-        data_final: new Date().toLocaleString(),
-        status: 0
+    var tempof1 = new Date().toLocaleString();
+    tempof1 = tempof1.replace('/', '-')
+    tempof1 = tempof1.replace('/', '-')
+
+    var inform3 = {}
+
+    inform3.nota_geral = analisar_resposta(),
+        inform3.data_final = tempof1,
+        inform3.duracao = calcular_h(tempof1),
+        inform3.status = 1
+    inform3.id_simulado = parseFloat(localStorage.getItem("id_simulado"))
+
+
+    try {
+        fetch('http://localhost:3030/simulado/final', {
+            method: 'PATCH',
+            body: JSON.stringify(inform3),
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            }
+
+        }).then(result => {
+            return result.json();
+        })
+    } catch (error) {
+        console.log(error);
     }
-    // localStorage.getItem("id_simulado")
-    // JSON.stringify(inform3)
-    const formData = new FormData();
 
-    formData.append('id_simulado', 3);
-    formData.append('nota_geral', analisar_resposta());
-    formData.append('data_final', new Date().toLocaleString());
-    formData.append('status', 0);
-
-    fetch("http://localhost:3030/simulado/final", {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ title: "Corrected post" })
-    })
-    console.log("rota patch ta indo")
+    location.assign('/usuarios/Notas');
 
 
 }
@@ -429,11 +449,58 @@ function analisar_resposta() {
             acertos++
         }
     }
-
-    console.log("acertou  " + acertos + "  questao")
     return acertos;
 
 }
+
+
+
+
+
+function calcular_h(dtPartida) {
+    data_inicio_banco();
+    let dtChegada = new moment(localStorage.getItem("hora_inicio"), "DD-MM-YYYY HH:mm:ss");
+    let parttida = new moment(dtPartida, "DD-MM-YYYY HH:mm:ss");
+    console.log(dtChegada)
+    console.log(parttida)
+
+    var ms = parttida.diff(dtChegada)
+    var d = moment.duration(ms);
+    var s = Math.floor(d.asHours()) + "h" + moment.utc(ms).format(" mm") + "m";
+
+    s = s.replace('h', ':')
+    s = s.replace(' ', '')
+    s = s.replace('-', '')
+    s = s.replace('m', ':00')
+    console.log("ss")
+    console.log(s)
+
+    return s
+}
+var data_inicio_2 = ''
+var data_inicio_1 = ''
+
+
+function data_inicio_banco() {
+
+    fetch('http://localhost:3030/simulado/final/' + parseFloat(localStorage.getItem("id_simulado")), {
+        method: 'GET',
+    })
+        .then(response => response.json())
+
+        .then(data => {
+            data_inicio_1 = data.data_inicio.replace("T", " ")
+            data_inicio_2 = data_inicio_1.replace(".000Z", "")
+            localStorage.setItem("hora_inicio", data_inicio_2);
+            localStorage.setItem("hora_inicio2", "data_inicio_2");
+            console.log("data_inicio_2")
+            console.log(data_inicio_2)
+        });
+
+
+
+}
+
 
 
 
@@ -603,7 +670,17 @@ function verificar_R(arrayresposta) {
 var ab = 0
 var arraygabarito = [];
 
+
+
 function limaparquestao() {
+
+    // colocar arrayquestao.length no lugar de 5, o tamanho -1
+    if (6 == ab) {
+        alert("simulado acabou")
+
+        simulado_questao(arrayresposta, arraygabarito);
+
+    }
     ab++
     var element1 = document.getElementById("numeroquestao");
     element1.removeChild(element1.childNodes[1]);
@@ -636,17 +713,13 @@ function limaparquestao() {
 
     localStorage.setItem("id_questao", null);
 
+
     fazersimulado()
 
 }
 
 function fazersimulado() {
-    if (arrayquestao.length == ab) {
-        console.log("simulado acabou")
-        console.log(arrayresposta)
-        // simulado_questao(arrayresposta, arraygabarito);
 
-    }
     localStorage.setItem("id_questao", arrayquestao[ab].id_questao);
     localStorage.setItem("R_questao", "");
     var R_gabarito = {
@@ -716,25 +789,8 @@ function fazersimulado() {
 
 }
 
-function Chamararraysimulados() {
-    arraysimulados = [];
-    fetch('http://localhost:3030/usuarios/simulados/' + localStorage.getItem("email"), {
-        method: 'GET'
-    })
-        .then(response => response.json())
-
-        .then(data => {
-            // console.log(data.simulados)
-
-            data.simulados.forEach(simu => {
-                arraysimulados.push(simu);
-            });
-        });
 
 
-    console.log("arraysimulados")
-    console.log(arraysimulados)
-}
 
 
 
@@ -899,7 +955,6 @@ searchBtn.addEventListener("click", () => { // Sidebar open when you click on th
     menuBtnChange(); //calling the function(optional)
 });
 
-//following are the code to change sidebar button(optional)
 function menuBtnChange() {
     if (sidebar.classList.contains("open")) {
         closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
@@ -908,43 +963,15 @@ function menuBtnChange() {
     }
 }
 
-
 function correto() {
     document.getElementById("ok").src = "../img/Vector.png"
 }
 
 
 
-// grafico
 
-// let labels = [
-//     '1º Simulado',
-//     '2º Simulado',
-//     '3º Simulado',
-//     '4º Simulado',
-// ];
-// let data = {
-//     labels: labels,
-//     datasets: [{
-//         label: 'My First dataset',
-//         backgroundColor: 'rgb(255, 99, 132)',
-//         borderColor: 'rgb(255, 99, 132)',
-//         data: [0, 10, 5, 2, 20, 30, 45],
-//     },
-//     {
-//         label: 'humanas',
-//         backgroundColor: 'rgb(255, 99, 132)',
-//         borderColor: 'rgb(255, 99, 132)',
-//         data: [4, 1, 16, 2, 20, 30, 45],
-//     }]
-// };
-// let config = {
-//     type: 'line',
-//     data: data,
-//     options: {}
-// };
-// let myChart = new Chart(
-//     document.getElementById('myChart'),
-//     config
-// );
+
+
+
+
 

@@ -18,6 +18,8 @@ const rotalogout = require('./routes/logout');
 const rotaperfil = require('./routes/perfil');
 const rotahome = require('./routes/home');
 const rotapages = require('./routes/pages');
+const rotasimulado = require('./routes/simulado')
+
 
 const rotateste = require('./routes/teste')
 
@@ -30,6 +32,7 @@ app.use('/logout', rotalogout);
 app.use('/perfil', rotaperfil);
 app.use('/home', rotahome);
 app.use('/pages', rotapages);
+app.use('/simulado', rotasimulado)
 
 
 

@@ -3,25 +3,22 @@ const router = express.Router();
 const mysql = require('../mysql').pool;
 
 router.post('/', (req, res, next) => {
-    console.log("body")
-    console.log(req.body)
-    console.log("possivel soluçao: passar tudo por params, mas vai ser feio e trabalhoso")
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
 
         conn.query(
             'INSERT INTO simulados (id_tipo_simulado, id_usuario, data_inicio, data_final, duracao, nota_geral, status) VALUES (?,?,?,?,?,?,?)',
             [
-                a = parseInt(req.body.id_tipo_simulado),
-                b = parseInt(req.body.id_usuario),
-                g = new String(req.body.data_inicio),
-                f = new String(req.body.data_final),
-                e =  String(req.body.duracao),
-                c = parseInt(req.body.nota_geral),
-                d = parseInt(req.body.status)
+                req.body.id_tipo_simulado,
+                req.body.id_usuario,
+                req.body.data_inicio,
+                req.body.data_final,
+                req.body.duracao,
+                req.body.nota_geral,
+                req.body.status
             ],
-            console.log("a, b, c"),
-            console.log(a, b, c, d, e, f, g),
+            // console.log(req.body),
+
             (error, result, field) => {
                 conn.release();
 
@@ -64,9 +61,59 @@ router.post('/questao/', (req, res, next) => {
     });
 });
 
+router.get('/:id_usuario/:id_tipo_simulado', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            `SELECT  id, id_tipo_simulado, duracao, nota_geral FROM simulados
+            WHERE STATUS = 1 AND id_usuario = ? AND id_tipo_simulado = ?
+            ORDER BY id  LIMIT 8;`,
+            [req.params.id_usuario, req.params.id_tipo_simulado],
+            
+            (error, result, field) => {
+                conn.release();
+                if (error) { return res.status(500).send({ error: error }) }
+                const response = {
+                    simulados_prontos: result.map(qts => {
+                        return {
+                            simulado: qts
+                        }
+
+                    }),
+
+
+                }
+                return res.status(201).send(response)
+            }
+        )
+    });
+
+});
+
+router.get('/final/:id_simulado', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            `SELECT * FROM simulados
+             WHERE    id = ?;`,
+            [req.params.id_simulado],
+            (error, result, field) => {
+                conn.release();
+                if (error) { return res.status(500).send({ error: error }) }
+                const response = {
+
+                    data_inicio: result[0].data_inicio
+
+                }
+                return res.status(201).send(response)
+            }
+        )
+    });
+
+});
+
 router.patch('/final/', (req, res, next) => {
-    console.log("body")
-    console.log(body)
+    console.log(req.body)
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
 
@@ -74,13 +121,14 @@ router.patch('/final/', (req, res, next) => {
             `UPDATE simulados
                SET nota_geral = ?,
                    data_final = ?,
+                   duracao = ?,
                    status = ?
              WHERE id = ?`,
             [
                 req.body.nota_geral,
                 req.body.data_final,
+                req.body.duracao,
                 req.body.status,
-                req.body.data_final,
                 req.body.id_simulado
             ],
             (error, result, field) => {

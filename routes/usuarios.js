@@ -8,6 +8,10 @@ router.get('/dashboard', (req, res) => {
     res.sendFile(__basedir + '/public/pages/dashboard.html');
 });
 
+router.get('/Notas', (req, res) => {
+    res.sendFile(__basedir + '/public/pages/nota.html');
+});
+
 router.get('/cadastro', (req, res) => {
     res.sendFile(__basedir + '/public/pages/cadastro.html');
 });
