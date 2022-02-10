@@ -228,7 +228,7 @@ router.get('/lista', (req, res, next) => {
                             },
                             Request: {
                                 tipo: 'GET',
-                                descricao: 'Retorna os detalhes de uma questao específico',
+                                descricao: 'Retorna os usuarios',
                                 url: 'http://localhost:3030/usuarios/lista/' + listauser.email
 
                             }

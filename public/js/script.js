@@ -277,13 +277,10 @@ function gerarsimulado(id_tipo_simulado) {
 
             .then(data => {
                 data.questao1.forEach(quest => {
-                    fetch('http://localhost:3030/questoes/' + id_tipo_simulado, {
-                        method: 'GET'
-                    })
                     arrayquestao_geral.push(quest);
 
                 });
-                console.log('asdasdsad')
+
 
 
                 for (var af = 0; af < 15; af++) {
@@ -369,7 +366,11 @@ function simulado_banco() {
         }).then(data => {
 
             localStorage.setItem("id_simulado", data.id_simulado);
+            alert("cm")
             data_inicio_banco();
+
+
+
         });
 
     } catch (error) {
@@ -421,25 +422,27 @@ function finalizar_simu() {
     inform3.id_simulado = parseFloat(localStorage.getItem("id_simulado"))
 
 
-    try {
-        fetch('http://localhost:3030/simulado/final', {
-            method: 'PATCH',
-            body: JSON.stringify(inform3),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            }
-
-        }).then(result => {
-            return result.json();
-        })
-    } catch (error) {
-        console.log(error);
-    }
+    func_finalizar_simu_banco(inform3);
 
     location.assign('/usuarios/Notas');
+}
 
+function func_finalizar_simu_banco(inform3) {
+    fetch('http://localhost:3030/simulado/', {
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+
+        },
+        method: 'PATCH',
+        body: JSON.stringify(inform3)
+
+
+    })
+        .then(response => response.json())
+        .then(json => console.log(json))
 
 }
+
 
 function analisar_resposta() {
     var acertos = 0
@@ -477,29 +480,39 @@ function calcular_h(dtPartida) {
 
     return s
 }
-var data_inicio_2 = ''
-var data_inicio_1 = ''
 
+// var data_inicio_2 = ''
+// var data_inicio_1 = ''
 
 function data_inicio_banco() {
-
-    fetch('http://localhost:3030/simulado/final/' + parseFloat(localStorage.getItem("id_simulado")), {
+    alert("final 2.2")
+    fetch('http://localhost:3030/simulado/' + parseFloat(localStorage.getItem("id_simulado")), {
         method: 'GET',
     })
         .then(response => response.json())
 
         .then(data => {
-            data_inicio_1 = data.data_inicio.replace("T", " ")
-            data_inicio_2 = data_inicio_1.replace(".000Z", "")
-            localStorage.setItem("hora_inicio", data_inicio_2);
-            localStorage.setItem("hora_inicio2", "data_inicio_2");
-            console.log("data_inicio_2")
-            console.log(data_inicio_2)
+            alert("final1")
+            // let data_inicio_1 = data.data_inicio.replace("T", " ")
+            // let data_inicio_2 = data_inicio_1.replace(".000Z", "")
+            // localStorage.setItem("hora_inicio", data_inicio_2);
+          
+            // func_replace(data);
+            console.log(data.data_inicio)
+            alert(data.data_inicio)
         });
 
+}
+
+function func_replace(data) {
+    let data_inicio_1 = data.data_inicio.replace("T", " ")
+    let data_inicio_2 = data_inicio_1.replace(".000Z", "")
+    localStorage.setItem("hora_inicio", data_inicio_2);
+    alert("final")
 
 
 }
+
 
 
 
@@ -675,7 +688,7 @@ var arraygabarito = [];
 function limaparquestao() {
 
     // colocar arrayquestao.length no lugar de 5, o tamanho -1
-    if (6 == ab) {
+    if (1 == ab) {
         alert("simulado acabou")
 
         simulado_questao(arrayresposta, arraygabarito);
@@ -968,6 +981,134 @@ function correto() {
 }
 
 
+// var arraysimulados = [];
+
+// var  arraysimulados_tipo1 = [];
+
+// var  arraysimulados_tipo2 = [];
+
+// var  arraysimulados_tipo3 = [];
+
+// var  arraysimulados_tipo4 = [];
+
+
+// function Chamararraysimulados(valor_1_4) {
+//     let arraysimulados = [];
+//     fetch('http://localhost:3030/simulado/' + parseFloat(localStorage.getItem("Id_user")) + '/' + valor_1_4, {
+//         method: 'GET'
+//     })
+//         .then(response => response.json())
+
+//         .then(data => {
+
+
+//             data.simulados_prontos.forEach(simu => {
+//                 arraysimulados.push(simu);
+//             });
+//             if(valor_1_4 == 4){
+//                 separar_tipos_simulado(arraysimulados)
+//             }
+
+
+
+//             // return arraysimulados
+//         });
+
+// }
+// function separar_tipos_simulado(arraysimulados){
+//     console.log(arraysimulados)
+//     let  arraysimulados_tipo1 = [];
+
+//     let  arraysimulados_tipo2 = [];
+
+//     let  arraysimulados_tipo3 = [];
+
+//     var  arraysimulados_tipo4 = [];
+
+//      for (var aj = 0; aj < arraysimulados.length; aj++) {
+
+//         switch (arraysimulados[aj].simulado.id_tipo_simulado) {
+//             case 1:
+//               console.log("1")
+//                 arraysimulados_tipo1.push(arraysimulados[aj].simulado.nota_geral);
+//               break;
+//             case 2:
+//                 console.log("2");
+//                 arraysimulados_tipo2.push(arraysimulados[aj].simulado.nota_geral);
+//               break;
+//             case 3:
+//                 console.log("3");
+//                 arraysimulados_tipo3.push(arraysimulados[aj].simulado.nota_geral);
+//               break;
+//             case 4:
+//                 console.log("4");
+//                 arraysimulados_tipo4.push(arraysimulados[aj].simulado.nota_geral);
+//               break;
+
+//             default:
+
+
+//           }
+
+
+
+//     }
+//     console.log(arraysimulados_tipo1)
+//     console.log(arraysimulados_tipo2)
+//     console.log(arraysimulados_tipo3)
+//     console.log(arraysimulados_tipo4)
+
+// }
+
+
+// function mudar_valor_1_4() {
+//     for (var ah = 1; ah < 5; ah++) {
+//         Chamararraysimulados(ah)
+
+//     }
+
+// }
+
+
+
+
+
+// var ctx = document.getElementById('myChart')
+
+// var data_chart = {
+//     labels:  ['Porcentem de acerto', 'y', 'z', 'a', 'b'],
+//     datasets: [{
+//         label: 'CIÊNCIAS DA NATUREZA',
+//         backgroundColor: '#73DA73',
+//         borderColor: '#73DA73',
+//         data:  arraysimulados_tipo2,
+//     },{
+//         label: 'CIÊNCIAS HUMANAS',
+//         backgroundColor: '#E7EC49',
+//         borderColor: '#E7EC49',
+//         data: arraysimulados_tipo1,
+//     },{
+//         label: 'MATEMÁTICA',
+//         backgroundColor: '#3B91E7',
+//         borderColor: '#3B91E7',
+//         data:  arraysimulados_tipo4,
+//     },{
+//         label: 'LINGUAGENS E CÓDIGOS',
+//         backgroundColor: 'rgb(255, 99, 132)',
+//         borderColor: 'rgb(255, 99, 132)',
+//         data: arraysimulados_tipo3,
+//     }]
+// };
+
+
+// const myChart = new Chart(ctx, {
+//     type: 'line',
+//     data: data_chart,
+//     options: {
+
+//     }
+
+// });
 
 
 
