@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 router.get('/dashboard', (req, res) => {
-    res.sendFile(__basedir + '/public/pages/dashboard.html');
+    res.sendFile(__basedir + '/public/pages/dashboard2.html');
 });
 
 router.get('/Notas', (req, res) => {
@@ -52,27 +52,35 @@ router.get('/simulados/:email', (req, res, next) => {
 });
 
 router.post('/cadastro', (req, res, next) => {
+ 
     mysql.getConnection((error, conn) => {
-        if (error) { return res.status(500).send({ error: error }) }
+        if (error) {
+            
+            return res.status(500).send({ error: error }) 
+    }
         conn.query('SELECT * FROM usuario WHERE email = ?', [req.body.email], (error, results) => {
-            if (error) { return res.status(500).send({ error: error }) }
+            if (error) {console.log(error) 
+                 return res.status(500).send({ error: error }) }
             if (results.length > 0) {
                 res.status(409).send({ mensagem: 'Email do usuário já cadastrada' })
             } else {
                 conn.query('SELECT * FROM usuario WHERE CPF = ?', [req.body.cpf], (error, results) => {
-                    if (error) { return res.status(500).send({ error: error }) }
+                    if (error) { console.log(error) 
+                        return res.status(500).send({ error: error }) }
                     if (results.length > 0) {
                         res.status(409).send({ mensagem: 'CPF do usuário já cadastrada' })
                     } else {
 
                         bcrypt.hash(req.body.senha, 10, (errBcrypt, hash) => {
-                            if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
+                            if (errBcrypt) { console.log(error) 
+                                return res.status(500).send({ error: errBcrypt }) }
                             conn.query(
                                 `INSERT INTO usuario (nome, email, cpf, telefone, senha) VALUES (?,?,?,?,?)`,
                                 [req.body.nome, req.body.email, req.body.cpf, req.body.telefone, hash],
                                 (error, results) => {
                                     conn.release();
-                                    if (error) { return res.status(500).send({ error: error }) }
+                                    if (error) {console.log(error) 
+                                         return res.status(500).send({ error: error }) }
                                     response = {
                                         mensagem: 'Usuário criado com sucesso',
                                         usuarioCriado: {
@@ -305,8 +313,3 @@ router.get('/:email', (req, res, next) => {
 
 
 module.exports = router;
-
-
-
-
-
