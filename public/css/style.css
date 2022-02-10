@@ -1344,6 +1344,7 @@ height: 34px;
   margin-top: 4px;
 }
 
+
 .lado{
   width: 103px;
   height: 24px;
@@ -1363,8 +1364,8 @@ height: 34px;
 }
 
 .excluir{
-  height: 43px;
-  width: 200px;
+  height: 42px;
+  width: 240px;
   font-family: 'robotolight';
   font-style: normal;
   font-weight: 700;

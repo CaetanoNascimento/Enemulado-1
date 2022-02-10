@@ -9,9 +9,15 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+   
+
+    
 </head>
 
-<body onload="jwt_auth_load()">
+<body onload="mudar_valor_1_4()">
     <div class="sidebar">
         <div class="logo-details">
 
@@ -49,152 +55,95 @@
     <section class="home-section">
         <div class="row-1">
             <div class="col-12 novinho ">
-                <button  class="novoSimulado"> <a href="/pages/escolha">NOVO SIMULADO</a> </button>
-               
+                <button class="novoSimulado"> <a href="/pages/escolha">NOVO SIMULADO</a> </button>
+                
             </div>
         </div>
         <div class="row-1">
-            <div class="col-3 pontuacao">
-                <span>Ciencia da Natureza</span>
-                <img src="../img/nota1.png">
+            <div class="col-3 pontuacao" >
+                <span>Ciencia da Humanas</span>
+                <p id="CH_media">000</p>
             </div>
 
             <div class="col-3 pontuacao">
                 <span>Ciencia da Natureza</span>
-                <img src="../img/nota2.png">
+                <p id="CN_media">000</p>
             </div>
 
             <div class="col-3 pontuacao">
-                <span>Ciencia da Natureza</span>
-                <img src="../img/nota3.png">
+                <span>Linguagens e Códigos</span>
+                <p id="LC_media">000</p>
             </div>
 
             <div class="col-3 pontuacao">
-                <span>Ciencia da Natureza</span>
-                <img src="../img/nota4.png">
+                <span>Matemática</span>
+                <p id="MT_media">000</p>
             </div>
         </div>
         <div class="row-1">
             <div class="col-12 grafico">
-                <img src="../img/image_principal10.png">
+                <canvas id="myChart"></canvas>
             </div>
         </div>
 
         <div class="row-1">
-            <div class="col-3">
+            <div class="col-3" id="simula">
                 <span class="simulado">Simulado</span>
-                <div class="linha"></div>
-                <span class="excluir">Ciencias da Natureza</span>
-                    <span id="e">Excluir</span>
-                
-
-                <div class="linha"></div>
-                <span class="excluir">Matematica</span>
-                   <span id="f"> Excluir</span>
-
-                <div class="linha"></div>
-                <span class="excluir">Linguagens e Codigos</span>
-                    <span id="g">Excluir</span>
-
-                <div class="linha"></div>
-                <span class="excluir">Ciencias da Natureza</span>
-                   <span id="g">Excluir</span>
-                
             </div>
 
             <div class="col-9">
                 <div class="row-1">
-                    <div class="col-2">
-                        <span class="lado">Data</span>
-                        <div class="todos"></div>
-                        <span class="resto">26/04/2008</span>
-
-                        <div class="todos"></div>
-                        <span id="resto1">26/04/2008</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">26/04/2009</span>
-
-                        <div class="todos"></div>
-                        <span id="resto2">26/04/2011</span>
-                       
-
+                    <div class="col-2" id="data_simula">
+                        <span class="lado" >Data</span>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-2"  id="melhor_materia">
                         <span class="lado">Melhor Materia</span>
-                        <div class="todos"></div>
-                        <span class="resto">Quimica</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">Fisica</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">Portugues</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">Filosofia</span>
-
-                       
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-2" id="tempo">
                         <span class="lado">Tempo</span>
-                        <div class="todos"></div>
-                        <span class="resto">3h40min</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">3h40min</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">3h40min</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">3h40min</span>
-
-
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-2" id="nota">
                         <span class="lado">Nota Geral</span>
-                        <div class="todos"></div>
-                        <span class="resto">45/60</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">33/65</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">45/60</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">12/60</span>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-2" id="status">
                         <span class="lado">Status</span>
-                        <div class="todos"></div>
-                        <span class="resto">Em aberto</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">Finalizado</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">Finalizado</span>
-
-                        <div class="todos"></div>
-                        <span class="resto">Erro</span>
-
-                    </div>
+         
                 </div>
             </div>
+
         </div>
-       
 
 
 
-        <script src="../js/script.js"></script>
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+      
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.1/dist/chart.min.js"></script>
+        <script type="text/javascript" src="../js/script.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+
     </section>
 </body>
+
 
 </html>
